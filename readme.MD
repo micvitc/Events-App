@@ -1,0 +1,1 @@
+This Repo Contains the code for Events App
