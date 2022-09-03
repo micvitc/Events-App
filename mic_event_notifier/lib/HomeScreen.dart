@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'main.dart';
 import 'loginpage.dart';
+int notification_bool=0;
 int slider_event = eventname.length;
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: MediaQuery.of(context).size.width*0.025,),
+                      SizedBox(height: MediaQuery.of(context).size.width*0.05),
                       Container(
                         child: Stack(
                           // crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,15 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                //mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Text('Hello User !',
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.workSans(
-                                        color: Colors.white,
+                                        color: vwhite,
                                         fontSize: MediaQuery.of(context).size.width*0.05,
-                                        fontWeight: FontWeight.w300,
+                                        fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                   Text(username.text,
@@ -87,17 +88,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 80,
                                 child: ElevatedButton(
                                   child: Icon(
-                                    Icons.notifications_active,
-                                    size: MediaQuery.of(context).size.width*0.1,
+                                    Icons.notifications_none_sharp,
+                                    size: MediaQuery.of(context).size.width*0.075,
                                     color: bfont,
                                   ),
                                   style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xffF0F0F0),
+                                      backgroundColor:
+                                      (notification_bool==1)?
+                                          bfont:
+                                      Color(0xffF0F0F0),
                                       shape: CircleBorder()/*const RoundedRectangleBorder(
                                         borderRadius:
                                         BorderRadius.all(Radius.circular(180))),*/
                                   ),
                                   onPressed: () {
+                                    setState(() {
+                                      notification_bool==1;
+                                    });
                                   },
                                 ),
                               ),
@@ -124,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 '$slider_event events',
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.workSans(
-                                  color: Colors.white,
+                                  color: vwhite,
                                   fontSize: MediaQuery.of(context).size.width*0.04,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -174,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   '$slider_event events',
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.workSans(
-                                    color: Colors.white,
+                                    color: vwhite,
                                     fontSize: MediaQuery.of(context).size.width*0.04,
                                     fontWeight: FontWeight.w400,
                                   ),

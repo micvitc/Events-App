@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'loginpage.dart';
 //DE7BDE
+Color vwhite = Color(0xffF3F3F3);
 Color vhome = Color(0xFFDE7ADE);
 Color bfont = Color(0xff2D2D2D);
 Color r =  Color(0xffDB4437);
