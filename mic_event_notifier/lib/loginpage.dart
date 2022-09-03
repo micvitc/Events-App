@@ -1,324 +1,134 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:mic_event_notifier/HomeScreen.dart';
-int pageview = 0;
-TextEditingController user_username = new TextEditingController();
-TextEditingController admin_username = new TextEditingController();
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+
+class MyLogin extends StatefulWidget {
+  const MyLogin({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<MyLogin> createState() => _MyLoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _MyLoginState extends State<MyLogin> {
+  TextEditingController emailAddress = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-       body: SafeArea(
-         child: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
-           crossAxisAlignment: CrossAxisAlignment.center,
-           children: [
-             (pageview == 0)
-                 ? Column(
-               children: [
-                 Align(
-                   alignment: Alignment.center,
-                   child: ElevatedButton(
-                       style: ElevatedButton.styleFrom(
-                           elevation: 5.0,
-                           shape: StadiumBorder(),
-                           primary: Colors.black),
-                       onPressed: () {
-                         setState(() {
-                           pageview = 1;
-                         });
-                       },
-                       child: Padding(
-                         padding: EdgeInsets.fromLTRB(
-                             MediaQuery.of(context).size.height * 0.04,
-                             12,
-                             MediaQuery.of(context).size.height * 0.04,
-                             12),
-                         child: Text(
-                           'Login as Admin',
-                           style: TextStyle(
-                               color: Colors.white,
-                               fontSize:
-                               MediaQuery.of(context).size.height *
-                                   0.02),
-                         ),
-                       )),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(15.0),
-                   child: ElevatedButton(
-                       style: ElevatedButton.styleFrom(
-                           elevation: 5.0,
-                           shape: StadiumBorder(),
-                           primary: Colors.black),
-                       onPressed: () {
-                         setState(() {
-                           pageview = 2;
-                         });
-                       },
-                       child: Padding(
-                         padding: EdgeInsets.fromLTRB(
-                             MediaQuery.of(context).size.height * 0.04,
-                             12,
-                             MediaQuery.of(context).size.height * 0.04,
-                             12),
-                         child: Text(
-                           'Login as User',
-                           style: TextStyle(
-                               color: Colors.white,
-                               fontSize:
-                               MediaQuery.of(context).size.height *
-                                   0.02),
-                         ),
-                       )),
-                 )
-               ],
-             )
-                 : (pageview == 1)
-                 ? Column(children: [
-               Row(
-                 children: [
-                   Container(
-                     color: Colors.transparent,
-                     padding: EdgeInsets.all(3),
-                     alignment: Alignment.centerLeft,
-                     child: TextButton(
-                         onPressed: () {
-                           setState(() {
-                             pageview = 0;
-                           });
-                         },
-                         child: Icon(
-                           Icons.arrow_back_ios,
-                           color: Colors.black,
-                         )),
-                   ),
-                   Text(
-                     textAlign: TextAlign.center,
-                     'Login as Admin',
-                     style: TextStyle(
-                         color: Colors.black,
-                         fontSize:
-                         MediaQuery.of(context).size.width *
-                             0.075),
-                   ),
-                 ],
-               ),
-               SizedBox(
-                   height:
-                   MediaQuery.of(context).size.height * 0.025),
-               Center(
-                 child: Container(
-                   width:
-                   MediaQuery.of(context).size.width * 0.9,
-                   decoration: new BoxDecoration(
-                     color: Color(0xFFF7F8F8),
-                     shape: BoxShape.rectangle,
-                     border: Border.all(width: 2.0),
-                     borderRadius: BorderRadius.all(
-                         Radius.circular(15.0)),
-                   ),
-                   child: Column(
-                     children: [
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Container(
-                           color: Colors.transparent,
-                           constraints: BoxConstraints(
-                               minHeight:
-                               MediaQuery.of(context)
-                                   .size
-                                   .height *
-                                   0.05),
-                           child: TextField(
-                             maxLines: 1,
-                             onChanged: (_) {
-                               setState(() {});
-                             },
-                             decoration: InputDecoration(
-                               fillColor: Colors.black,
-                               border: InputBorder.none,
-                             ),
-                             cursorColor: Colors.black,
-                             controller: admin_username,
-                           ),
-                         ),
-                       ),
-                     ],
-                   ),
-                 ),
-               ),
-               Row(
-                 children: [
-                   Padding(
-                     padding: const EdgeInsets.all(8.0),
-                     child: ElevatedButton(
-                         style: ElevatedButton.styleFrom(
-                             elevation: 5.0,
-                             shape: StadiumBorder(),
-                             primary: Colors.black),
-                         onPressed: () {
-                           Navigator.push(
-                             context,
-                             MaterialPageRoute(
-                                 builder: (context) =>
-                                     HomeScreen()
-                             ),
-                           );
-                         },
-                         child: Padding(
-                           padding: EdgeInsets.fromLTRB(
-                               MediaQuery.of(context).size.height *
-                                   0.048,
-                               12,
-                               MediaQuery.of(context).size.height *
-                                   0.048,
-                               12),
-                           child: Text(
-                             'Login',
-                             style: TextStyle(
-                                 color: Colors.white,
-                                 fontSize: MediaQuery.of(context)
-                                     .size
-                                     .height *
-                                     0.02),
-                           ),
-                         )),
-                   ),
-                 ],
-               ),
-             ])
-                 : (pageview == 2)
-                 ? Column(
-                 children: [
-               Row(
-                 children: [
-                   Container(
-                     padding: EdgeInsets.all(3),
-                     alignment: Alignment.centerLeft,
-                     child: TextButton(
-                         onPressed: () {
-                           setState(() {
-                             pageview = 0;
-                           });
-                         },
-                         child: Icon(
-                           Icons.arrow_back_ios,
-                           color: Colors.black,
-                         )),
-                   ),
-                   Text(
-                     textAlign: TextAlign.center,
-                     'Login as User',
-                     style: TextStyle(
-                         color: Colors.black,
-                         fontSize: MediaQuery.of(context)
-                             .size
-                             .width *
-                             0.075),
-                   ),
-                 ],
-               ),
-               Center(
-                 child: Container(
-                   width:
-                   MediaQuery.of(context).size.width * 0.9,
-                   decoration: new BoxDecoration(
-                     color: Color(0xFFF7F8F8),
-                     shape: BoxShape.rectangle,
-                     border: Border.all(width: 2.0),
-                     borderRadius: BorderRadius.all(
-                         Radius.circular(15.0)),
-                   ),
-                   child: Column(
-                     children: [
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Container(
-                           color: Colors.transparent,
-                           constraints: BoxConstraints(
-                               minHeight:
-                               MediaQuery.of(context)
-                                   .size
-                                   .height *
-                                   0.05),
-                           child: TextField(
-                             maxLines: 1,
-                             onChanged: (_) {
-                               setState(() {});
-                             },
-                             decoration: InputDecoration(
-                               fillColor: Colors.black,
-                               border: InputBorder.none,
-                             ),
-                             cursorColor: Colors.black,
-                             controller: user_username,
-                           ),
-                         ),
-                       ),
-                     ],
-                   ),
-                 ),
-               ),
-               SizedBox(
-                   height: MediaQuery.of(context).size.height *
-                       0.025),
-             SizedBox(
-                 height:
-                 MediaQuery.of(context).size.height * 0.025),
-                   Row(
-                     children: [
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: ElevatedButton(
-                             style: ElevatedButton.styleFrom(
-                                 elevation: 5.0,
-                                 shape: StadiumBorder(),
-                                 primary: Colors.black),
-                             onPressed: () {
-                               Navigator.push(
-                                 context,
-                                 MaterialPageRoute(
-                                     builder: (context) =>
-                                         HomeScreen()
-                                 ),
-                               );
-                             },
-                             child: Padding(
-                               padding: EdgeInsets.fromLTRB(
-                                   MediaQuery.of(context).size.height *
-                                       0.048,
-                                   12,
-                                   MediaQuery.of(context).size.height *
-                                       0.048,
-                                   12),
-                               child: Text(
-                                 'Login',
-                                 style: TextStyle(
-                                     color: Colors.white,
-                                     fontSize: MediaQuery.of(context)
-                                         .size
-                                         .height *
-                                         0.02),
-                               ),
-                             )),
-                       ),
-                     ],
-                   ),
-              // _googleSignInButton()
-             ]
-             )
-                 : Text('nothing')
-           ],
-         ),
-       ),
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                'assets/vivid-blurred-colorful-wallpaper-background.jpg',
+              ),
+              fit: BoxFit.cover)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 35, top: 180, right: 35),
+              child: Text(
+                'VITCC Events',
+                style: GoogleFonts.nunito(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  textStyle: Theme.of(context).textTheme.headline4,
+                  fontSize: 48,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
+              child: Text(
+                'All events in one place',
+                style: GoogleFonts.nunito(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  textStyle: Theme.of(context).textTheme.headline4,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              child: Container(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.70,
+                      left: 35,
+                      right: 35),
+                  child: Column(
+                    children: [
+                      TextField(
+                          controller: emailAddress,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Enter your VIT Email here",
+                              hoverColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ))),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary:
+                                    const Color.fromARGB(255, 0, 208, 255)),
+                            onPressed: () {
+                              var email = emailAddress.text;
+                              if (email.endsWith("@vitstudent.ac.in") == true) {
+                                print("Access to VIT Events");
+                              } else if (email.endsWith("@adminac.in") ==
+                                  true) {
+                                print("Access to Admin Events");
+                              } else {
+                                print("No Access to VIT Events");
+                              }
+                            },
+                            child: IconButton(
+                              onPressed: () {
+                                var email = emailAddress.text;
+                                if (email.endsWith("@vitstudent.ac.in") ==
+                                    true) {
+                                  print("Access to VIT Events");
+                                } else if (email.endsWith("@adminac.in") ==
+                                    true) {
+                                  print("Access to Admin Events");
+                                } else {
+                                  print("No Access to VIT Events");
+                                }
+                              },
+                              icon: const Icon(Icons.arrow_forward),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                    "Facing problems ? Contact Us",
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        fontSize: 18,
+                                        color: Colors.white))),
+                          ]),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  )),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
-
