@@ -212,59 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
 ///todo:design this card according to UI - for Shalini
   Widget  EventCard() {
     return Card(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index){
-                return Container(
-                  alignment: Alignment.center,
-                  color: Color(0xFFDE7ADE),
-                  height: 100,
-                  width: 100,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
-                        child: Row(
-                        children: const <Widget>[
-                          Text("Open Mic \n MICROSOFT INN0VATIONS CLUB"),
-                          Icon(Icons.check_circle),
-                        ],
-                       ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
-                        child: Column(
-                          children: const <Widget>[
-                            Divider(
-                              color: Colors.black,
-                              height: 25,
-                              thickness: 2,
-                              indent: 5,
-                              endIndent: 5,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
-                        child: Row(
-                          children: const <Widget>[
-                            Icon(Icons.calendar_today_rounded),
-                            Text("11:30 AM - 12:30 PM \n Mon, 17 Sept 2022"),
-                            Icon(Icons.plus_one_rounded),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }
-            ),
-          ),
-        ],
-      ),
+      
     );
   }
 
