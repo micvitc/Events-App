@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mic_event_notifier/HomeScreen.dart';
 import 'package:mic_event_notifier/loginpage.dart';
 Color vhome = Color(0xFFDE7ADE);
 Color bfont = Color(0xff2D2D2D);
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage()
+      home: HomeScreen()//LoginPage()
     );
   }
 }
