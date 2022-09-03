@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'main.dart';
 import 'loginpage.dart';
+int slider_event = eventname.length;
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
   'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
@@ -107,13 +108,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: MediaQuery.of(context).size.width*0.05,),
                       Row(
                         children: [
-                          Text('Events u have registered for',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.workSans(
-                                color: bfont,
-                                fontSize: MediaQuery.of(context).size.width*0.04,
-                                fontWeight: FontWeight.bold
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:[
+                              Text('Events u have registered for',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.workSans(
+                                  color: bfont,
+                                  fontSize: MediaQuery.of(context).size.width*0.04,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
+                              Text(
+                                '$slider_event events',
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.workSans(
+                                  color: Colors.white,
+                                  fontSize: MediaQuery.of(context).size.width*0.04,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              )
+                           ]
                           ),
                           SizedBox(width: MediaQuery.of(context).size.width*0.2),
                           Align(
@@ -139,7 +155,44 @@ class _HomeScreenState extends State<HomeScreen> {
                           items: imageSliders,
                         ),
                       ),
-                      EventsCard()
+                      SizedBox(height: MediaQuery.of(context).size.height*0.025),
+                      Row(
+                        children: [
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children:[
+                                Text('Upcoming Events',
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.workSans(
+                                      color: bfont,
+                                      fontSize: MediaQuery.of(context).size.width*0.04,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                ),
+                                Text(
+                                  '$slider_event events',
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.workSans(
+                                    color: Colors.white,
+                                    fontSize: MediaQuery.of(context).size.width*0.04,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                )
+                              ]
+                          ),
+                          SizedBox(width: MediaQuery.of(context).size.width*0.4),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Icon(
+                              Icons.sort_sharp,
+                              color: bfont,
+                              size: 28,
+                            ),
+                          )
+                        ],
+                      ),
+                      EventCard()
                     ]
                 ),
               ),
@@ -149,21 +202,13 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 
-class EventsCard extends StatefulWidget {
-  const EventsCard({Key? key}) : super(key: key);
-
-  @override
-  State<EventsCard> createState() => _EventsCardState();
-}
-///todo:implement scroll view and implement the tile card in scrollview
-class _EventsCardState extends State<EventsCard> {
-  @override
-  Widget build(BuildContext context) {
+///todo:design this card according to UI - for Shalini
+  Widget  EventCard() {
     return Card(
 
     );
   }
-}
+
 final List<Widget>
 imageSliders =
 eventname.map((item)
@@ -211,7 +256,7 @@ eventname.map((item)
                       height: 100,
                     ),*/
                     SizedBox(),
-                  ///todo:implement current ui for event details in slider
+                  ///todo:implement current ui for event details in slider - for Rishabh
                   /*  Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
