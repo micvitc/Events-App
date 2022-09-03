@@ -2,11 +2,8 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mic_event_notifier/assignevent.dart';
-import 'package:mic_event_notifier/loginpage.dart';
-import 'package:mic_event_notifier/main.dart';
 import 'main.dart';
-String username ="Haresh Baskaran";
+import 'loginpage.dart';
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
   'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
@@ -35,16 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFFDE7ADE),
-               // Color(0xffEFF7F6),
-                Color(0xFFDE7ADE)]
-          )
-      ),
+     decoration: const BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage(
+      'assets/homescreen.jpg',
+    ),
+    fit: BoxFit.cover)),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Padding(
@@ -75,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('$username',
+                                  Text(username.text,
                                     textAlign: TextAlign.left,
                                     style: GoogleFonts.workSans(
                                         color: bfont,
@@ -138,8 +131,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: CarouselSlider(
                           options: CarouselOptions(
                             autoPlay: true,
-                            aspectRatio: 2.0,
+                            aspectRatio: 1.5,
+                            enableInfiniteScroll: true,
                             enlargeCenterPage: true,
+
                           ),
                           items: imageSliders,
                         ),
@@ -170,7 +165,10 @@ class _EventsCardState extends State<EventsCard> {
   }
 }
 final List<Widget>
-imageSliders = imgList.map((item)=> Flexible(
+imageSliders =
+eventname.map((item)
+//imgList.map((item)
+=> Flexible(
   flex: 5,
   child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(30.0),
@@ -197,7 +195,8 @@ imageSliders = imgList.map((item)=> Flexible(
                 children: [
                     Align(
                       alignment: Alignment.topLeft,
-                      child: Text('Ideathon',
+                      child:
+                      Text(item,
                         textAlign: TextAlign.left,
                         style: GoogleFonts.workSans(
                             color: bfont,
@@ -206,13 +205,14 @@ imageSliders = imgList.map((item)=> Flexible(
                         ),
                       ),
                     ),
-                    Image.network(item,
+                  /*  Image.network(item,
                         fit: BoxFit.cover,
                         width:200.0,
                       height: 100,
-                    ),
+                    ),*/
                     SizedBox(),
-                    Row(
+                  ///todo:implement current ui for event details in slider
+                  /*  Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -222,7 +222,7 @@ imageSliders = imgList.map((item)=> Flexible(
                           size: 24,
                         )
                       ],
-                  )
+                  )*/
                 ],
               ),
             ),

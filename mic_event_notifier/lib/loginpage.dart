@@ -1,6 +1,7 @@
+import 'package:Login_ui/HomeScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-
+TextEditingController username = TextEditingController();
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
 
@@ -9,7 +10,6 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
-  TextEditingController emailAddress = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +47,7 @@ class _MyLoginState extends State<MyLogin> {
                 ),
               ),
             ),
-            SingleChildScrollView(
+            Center(
               child: Container(
                   padding: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.70,
@@ -56,72 +56,77 @@ class _MyLoginState extends State<MyLogin> {
                   child: Column(
                     children: [
                       TextField(
-                          controller: emailAddress,
+                          controller: username,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                            icon: Icon(
+                              Icons.outgoing_mail,
+                              color:Color.fromARGB(222, 222, 123, 222),
+                              size: 32,
+                            ) ,
+                              alignLabelWithHint: true,
                               fillColor: Colors.grey.shade100,
                               filled: true,
-                              hintText: "Enter your VIT Email here",
+                              hintText: "Enter username here",
                               hoverColor: Colors.white,
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ))),
-                      const SizedBox(
-                        height: 25,
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(12),
+                              )
+                          )
+                      ),
+                     SizedBox(
+                        height: MediaQuery.of(context).size.height*0.02,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary:
-                                    const Color.fromARGB(255, 0, 208, 255)),
-                            onPressed: () {
-                              var email = emailAddress.text;
-                              if (email.endsWith("@vitstudent.ac.in") == true) {
-                                print("Access to VIT Events");
-                              } else if (email.endsWith("@adminac.in") ==
-                                  true) {
-                                print("Access to Admin Events");
-                              } else {
-                                print("No Access to VIT Events");
-                              }
-                            },
-                            child: IconButton(
+                          Container(
+
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: StadiumBorder(),
+                                  primary:
+                                      const Color.fromARGB(222, 222, 123, 222)),
                               onPressed: () {
-                                var email = emailAddress.text;
-                                if (email.endsWith("@vitstudent.ac.in") ==
-                                    true) {
-                                  print("Access to VIT Events");
-                                } else if (email.endsWith("@adminac.in") ==
-                                    true) {
-                                  print("Access to Admin Events");
-                                } else {
-                                  print("No Access to VIT Events");
-                                }
                               },
-                              icon: const Icon(Icons.arrow_forward),
+                              child: Stack(
+                                children:[
+                                TextButton(
+                                  child: Text(
+                                    'Sign In',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 28,
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HomeScreen()),
+                                    );
+                                  },
+                                ),
+                              /*    Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(Icons.g_mobiledata_rounded,
+                                    color: Colors.white,
+                                      size: 32,
+                                    ),
+                                  )*/
+                                ],
+                              ),
                             ),
                           )
                         ],
                       ),
                       const SizedBox(
                         height: 10,
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                    "Facing problems ? Contact Us",
-                                    style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 18,
-                                        color: Colors.white))),
-                          ]),
-                      const SizedBox(
-                        height: 20,
                       ),
                     ],
                   )),
