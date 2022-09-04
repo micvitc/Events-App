@@ -13,7 +13,7 @@ final List<String> imgList = [
   'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
 ];
 final List<String> eventname = [
-  'Ideathon','makeathon','Event','nothing','mickjdefnkj'
+  'Ideathon','makeathon','Event','nothing','appathon'
 ];
 class MyBehavior extends ScrollBehavior {
   @override
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: CarouselSlider(
                           options: CarouselOptions(
                             autoPlay: true,
-                            aspectRatio: 1.5,
+                            aspectRatio: 1.2,
                             enableInfiniteScroll: true,
                             enlargeCenterPage: true,
 
@@ -199,7 +199,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           )
                         ],
                       ),
-                      EventCard()
                     ]
                 ),
               ),
@@ -215,6 +214,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     );
   }
+
+
 
 final List<Widget>
 imageSliders =
@@ -248,33 +249,22 @@ eventname.map((item)
                     Align(
                       alignment: Alignment.topLeft,
                       child:
-                      Text(item,
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.workSans(
-                            color: bfont,
-                            fontSize:26,
-                            fontWeight: FontWeight.bold
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 12.0
+                        ),
+                        child: Text(item,
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.workSans(
+                              color: bfont,
+                              fontSize:26,
+                              fontWeight: FontWeight.bold
+                          ),
                         ),
                       ),
                     ),
-                  /*  Image.network(item,
-                        fit: BoxFit.cover,
-                        width:200.0,
-                      height: 100,
-                    ),*/
                     SizedBox(),
                   ///todo:implement current ui for event details in slider - for Rishabh
-                  /*  Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.calendar_today,
-                          color: Colors.black,
-                          size: 24,
-                        )
-                      ],
-                  )*/
                 ],
               ),
             ),
