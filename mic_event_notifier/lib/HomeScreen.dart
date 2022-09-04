@@ -211,7 +211,63 @@ class _HomeScreenState extends State<HomeScreen> {
 ///todo:design this card according to UI - for Shalini
   Widget  EventCard() {
     return Card(
-
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index){
+                    return Container(
+                      width: 300,
+                      height: 200,
+                      padding: new EdgeInsets.all(10.0),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0)
+                        ),
+                        color: vhome,
+                        elevation: 15,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            const ListTile(
+                              title: Text(
+                                'Open Mic',
+                                style: TextStyle(fontSize: 30.0),
+                              ),
+                              subtitle: Text(
+                                'MICROSOFT INNVATION CLUB',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                              trailing: Icon(Icons.check_circle),
+                            ),
+                            Divider(
+                              color: Colors.black,
+                              height: 25,
+                              thickness: 2,
+                              indent: 5,
+                              endIndent: 5,
+                            ),
+                            const ListTile(
+                              leading: Icon(Icons.calendar_today_rounded),
+                              title: Text(
+                                  '11:30 AM - 12:30 PM',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                              subtitle: Text(
+                                'Mon, 17 Sept 2022',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                              trailing: Icon(Icons.plus_one),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+              ),
+          ),
+        ],
+      ),
     );
   }
 
