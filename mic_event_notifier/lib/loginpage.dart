@@ -39,6 +39,7 @@ class _MyLoginState extends State<MyLogin> {
               padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
               child: Text(
                 'All events in one place',
+
                 style: GoogleFonts.nunito(
                   color: Color.fromARGB(255, 255, 255, 255),
                   textStyle: Theme.of(context).textTheme.headline4,
