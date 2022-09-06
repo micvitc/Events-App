@@ -4,6 +4,7 @@ import 'loginpage.dart';
 Color vwhite = Color(0xffF3F3F3);
 Color vhome = Color(0xFFDE7ADE);
 Color bfont = Color(0xff2D2D2D);
+Color bdiv = Color(0xff7B7B7B);
 Color r =  Color(0xffDB4437);
 void main() {
   runApp(const MyApp());

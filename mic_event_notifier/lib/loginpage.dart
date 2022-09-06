@@ -39,6 +39,7 @@ class _MyLoginState extends State<MyLogin> {
               padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
               child: Text(
                 'All events in one place',
+
                 style: GoogleFonts.nunito(
                   color: Color.fromARGB(255, 255, 255, 255),
                   textStyle: Theme.of(context).textTheme.headline4,
@@ -47,7 +48,7 @@ class _MyLoginState extends State<MyLogin> {
                 ),
               ),
             ),
-            Center(
+            SingleChildScrollView(
               child: Container(
                   padding: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.70,
@@ -59,15 +60,15 @@ class _MyLoginState extends State<MyLogin> {
                           controller: username,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            icon: Icon(
+                            icon:  Icon(
                               Icons.outgoing_mail,
                               color:Color.fromARGB(222, 222, 123, 222),
-                              size: 32,
-                            ) ,
-                              alignLabelWithHint: true,
+                              size: MediaQuery.of(context).size.width*0.1,
+                            ),
+                             // alignLabelWithHint: true,
                               fillColor: Colors.grey.shade100,
                               filled: true,
-                              hintText: "Enter username here",
+                              hintText: "    Enter username here",
                               hoverColor: Colors.white,
                               border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
