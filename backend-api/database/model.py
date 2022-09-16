@@ -8,5 +8,5 @@ class Event(db.Document):
     event_host = db.StringField(required=True)
     event_coordinators = db.StringField()
     user_id = db.IntField(primary_key=True, unique=True)
-    user_name = db.StringField(required=True)
+    user_name = db.StringField()
     
