@@ -32,10 +32,11 @@ class FilterApi(Resource):
     def get(self,school_name):
         get_school = Event.objects.get(school_name=school_name).to_json()
         return Response(get_school, mimetype="application/json",status=200)
-    def put(self,school_name):
-        put_school = request.get_json()
-        Event.objects.get(school_name=school_name).update(**put_school)
-        return '', 200
+    def post(self,school_name):
+        body = request.get_json()
+        school_name = Event(**body).save()
+        SchName = school_name.SchName
+        return {'SchoolName':str(SchName)}, 200
 
 
 #event_blueprint = Blueprint("events", __name__ )
