@@ -1,3 +1,4 @@
+import mimetypes
 from flask import Response, request, Blueprint
 from database.model import Event
 from flask_restful import Resource
@@ -26,6 +27,17 @@ class EventApi(Resource):
         Event.objects.get(id=id).delete(**body)
         return '', 200
 
-event_blueprint = Blueprint("events", __name__ )
+
+class FilterApi(Resource):
+    def get(self,school_name):
+        get_school = Event.objects.get(school_name=school_name).to_json()
+        return Response(get_school, mimetype="application/json",status=200)
+    def put(self,school_name):
+        put_school = request.get_json()
+        Event.objects.get(school_name=school_name).update(**put_school)
+        return '', 200
+
+
+#event_blueprint = Blueprint("events", __name__ )
 
     
