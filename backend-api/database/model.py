@@ -9,4 +9,4 @@ class Event(db.Document):
     event_coordinators = db.StringField()
     user_id = db.IntField(primary_key=True)
     user_name = db.StringField()
-    
+    school_name = db.StringField(required=True)
