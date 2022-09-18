@@ -16,8 +16,8 @@ class EventsApi(Resource):
         return {'id':str(id)}, 200
 
 class EventApi(Resource):
-    def get(self, id):
-        event = Event.objects.get(id=id).to_json()
+    def get(self, id:str):
+        event = Event.objects(event_id=id).to_json()
         return Response(event, mimetype="application/json", status=200)
     def put(self, id):
         body = request.get_json()

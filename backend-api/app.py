@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 api = Api(app)
 app.config['MONGODB_SETTINGS']={
-    'host': 'mongodb://localhost/event-notifier'
+    'host': 'mongodb://localhost:27017/event-notifier'
 }
 
 initialize_db(app)

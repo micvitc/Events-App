@@ -7,4 +7,5 @@ class Event(db.Document):
     event_venue = db.StringField(required = True)
     event_host = db.StringField(required=True)
     event_coordinators = db.StringField()
+    reg_url = db.URLField(required=False,blank=True,null=True)
     school_name = db.StringField(required=True)
