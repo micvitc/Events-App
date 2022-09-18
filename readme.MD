@@ -1,1 +1,1 @@
-[Check out the README to use API endpoints](README_API_ENDPOINTS/readME.md)
+[Check out the README to use API endpoints here](README_API_ENDPOINTS/readME.md)
