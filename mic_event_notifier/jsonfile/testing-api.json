@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "6326b921c1d817a37bef0148"
+  },
+  "event_id": "1",
+  "event_name": "Spin it win it",
+  "event_date": {
+    "$date": {
+      "$numberLong": "1664064000000"
+    }
+  },
+  "event_venue": "MG auditorium",
+  "event_host": [
+    "Microsoft innovations club"
+  ],
+  "event_coordinators": [
+    "A",
+    "B",
+    "C"
+  ],
+  "school_name": "SCOPE"
+},{
+  "_id": {
+    "$oid": "6326b9bdc1d817a37bef0149"
+  },
+  "event_id": "2",
+  "event_name": "SKRIBBL IO QUBIT",
+  "event_date": {
+    "$date": {
+      "$numberLong": "1662705000000"
+    }
+  },
+  "event_venue": "MG auditorium",
+  "event_host": [
+    "Microsoft innovations club"
+  ],
+  "event_coordinators": [
+    "A",
+    "B",
+    "C"
+  ],
+  "school_name": "SCOPE"
+},{
+  "_id": {
+    "$oid": "6326ba1fc1d817a37bef014a"
+  },
+  "event_id": "3",
+  "event_name": "FALL GUYS QUBIT",
+  "event_date": {
+    "$date": {
+      "$numberLong": "1663934400000"
+    }
+  },
+  "event_venue": "AB2 SMART CLASSROOM",
+  "event_host": [
+    "Microsoft innovations club"
+  ],
+  "event_coordinators": [
+    "A",
+    "B",
+    "C"
+  ],
+  "school_name": "SCOPE"
+},{
+  "_id": {
+    "$oid": "6326ba9ec1d817a37bef014c"
+  },
+  "event_id": "4",
+  "event_name": [
+    "WOrk shop on cloud security"
+  ],
+  "event_date": {
+    "$date": {
+      "$numberLong": "0"
+    }
+  },
+  "event_venue": "MG auditorium",
+  "event_host": [
+    "QBIT"
+  ],
+  "event_coordinators": [
+    "A",
+    "B",
+    "C"
+  ],
+  "school_name": "SCOPE"
+},{
+  "_id": {
+    "$oid": "6326bb0ec1d817a37bef014d"
+  },
+  "event_id": "5",
+  "event_name": "PROFILE BUILDING:HIGHER EDUCATION-PLACEMENT",
+  "event_date": {
+    "$date": {
+      "$numberLong": "1664024400000"
+    }
+  },
+  "event_venue": "MG auditorium",
+  "event_host": [
+    "TECHNOVIT"
+  ],
+  "event_coordinators": [
+    "A",
+    "B",
+    "C"
+  ],
+  "school_name": "SCOPE"
+}]

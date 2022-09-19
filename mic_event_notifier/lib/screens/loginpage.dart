@@ -1,7 +1,9 @@
-import 'package:Login_ui/HomeScreen.dart';
+import 'package:Login_ui/screens/HomeScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+
 TextEditingController username = TextEditingController();
+
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
 
@@ -39,7 +41,6 @@ class _MyLoginState extends State<MyLogin> {
               padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
               child: Text(
                 'All events in one place',
-
                 style: GoogleFonts.nunito(
                   color: Color.fromARGB(255, 255, 255, 255),
                   textStyle: Theme.of(context).textTheme.headline4,
@@ -60,12 +61,12 @@ class _MyLoginState extends State<MyLogin> {
                           controller: username,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            icon:  Icon(
-                              Icons.outgoing_mail,
-                              color:Color.fromARGB(222, 222, 123, 222),
-                              size: MediaQuery.of(context).size.width*0.1,
-                            ),
-                             // alignLabelWithHint: true,
+                              icon: Icon(
+                                Icons.outgoing_mail,
+                                color: Color.fromARGB(222, 222, 123, 222),
+                                size: MediaQuery.of(context).size.width * 0.1,
+                              ),
+                              // alignLabelWithHint: true,
                               fillColor: Colors.grey.shade100,
                               filled: true,
                               hintText: "    Enter username here",
@@ -73,47 +74,42 @@ class _MyLoginState extends State<MyLogin> {
                               border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(12),
-                              )
-                          )
-                      ),
-                     SizedBox(
-                        height: MediaQuery.of(context).size.height*0.02,
+                              ))),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                shape: StadiumBorder(),
+                                  shape: StadiumBorder(),
                                   primary:
                                       const Color.fromARGB(222, 222, 123, 222)),
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                               child: Stack(
-                                children:[
-                                TextButton(
-                                  child: Text(
-                                    'Sign In',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 28,
+                                children: [
+                                  TextButton(
+                                    child: Text(
+                                      'Sign In',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 28,
+                                      ),
                                     ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomeScreen()),
+                                      );
+                                    },
                                   ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              HomeScreen()),
-                                    );
-                                  },
-                                ),
-                              /*    Align(
+                                  /*    Align(
                                     alignment: Alignment.centerRight,
                                     child: Icon(Icons.g_mobiledata_rounded,
                                     color: Colors.white,
