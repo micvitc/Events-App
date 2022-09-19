@@ -1,1 +1,1 @@
-This Repo Contains the code for Events App
+[Check out the README to use API endpoints here](README_API_ENDPOINTS/readME.md)
