@@ -45,7 +45,7 @@
     "$oid": "6326ba1fc1d817a37bef014a"
   },
   "event_id": "3",
-  "event_name": "FALL GUYS QUBIT",
+  "event_name": "Hackathon",
   "event_date": {
     "$date": {
       "$numberLong": "1663934400000"
@@ -66,12 +66,12 @@
     "$oid": "6326ba9ec1d817a37bef014c"
   },
   "event_id": "4",
-  "event_name": [
-    "WOrk shop on cloud security"
-  ],
+  "event_name": 
+    "Work shop on cloud security"
+  ,
   "event_date": {
     "$date": {
-      "$numberLong": "0"
+      "$numberLong": "1243444"
     }
   },
   "event_venue": "MG auditorium",

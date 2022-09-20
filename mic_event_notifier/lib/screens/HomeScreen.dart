@@ -51,110 +51,117 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.fromLTRB(0, 22, 0, 0),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                 Container(
-                  child: Stack(
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(),
-                      // SizedBox(width: SizeConfig.screenWidth * 0.05),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              'Hello User !',
-                              textAlign: TextAlign.left,
-                              style: GoogleFonts.workSans(
-                                color: vwhite,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.05,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              username.text,
-                              textAlign: TextAlign.left,
-                              style: GoogleFonts.workSans(
-                                  color: bfont,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Stack(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(),
+                        // SizedBox(width: SizeConfig.screenWidth * 0.05),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Hello User !',
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.workSans(
+                                  color: vwhite,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // SizedBox(width: SizeConfig.screenWidth * 0.275),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                          width: 80,
-                          child: ElevatedButton(
-                            child: Icon(
-                              Icons.notifications_none_sharp,
-                              size: MediaQuery.of(context).size.width * 0.075,
-                              color: bfont,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffF0F0F0),
-                                shape:
-                                    CircleBorder() /*const RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.all(Radius.circular(180))),*/
+                                      MediaQuery.of(context).size.width * 0.05,
+                                  fontWeight: FontWeight.w400,
                                 ),
-                            onPressed: () {},
+                              ),
+                              Text(
+                                username.text,
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.workSans(
+                                    color: bfont,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.06,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
+                        // SizedBox(width: SizeConfig.screenWidth * 0.275),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            width: 80,
+                            child: ElevatedButton(
+                              child: Icon(
+                                Icons.notifications_none_sharp,
+                                size: MediaQuery.of(context).size.width * 0.075,
+                                color: bfont,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xffF0F0F0),
+                                  shape:
+                                      CircleBorder() /*const RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.all(Radius.circular(180))),*/
+                                  ),
+                              onPressed: () {},
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.05,
                 ),
-                Row(
-                  children: [
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Events u have registered for',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.workSans(
-                                color: bfont,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Row(
+                    children: [
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Events u have registered for',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.workSans(
+                                  color: bfont,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '$slider_event events',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.workSans(
+                                color: vwhite,
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.04,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '$slider_event events',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.workSans(
-                              color: vwhite,
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.04,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ]),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(
-                        Icons.sort_sharp,
-                        color: bfont,
-                        size: 28,
-                      ),
-                    )
-                  ],
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ]),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.sort_sharp,
+                          color: bfont,
+                          size: 28,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
                 Container(
@@ -169,44 +176,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
-                Row(
-                  children: [
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Upcoming Events',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.workSans(
-                                color: bfont,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Row(
+                    children: [
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Upcoming Events',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.workSans(
+                                  color: bfont,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '$slider_event events',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.workSans(
+                                color: vwhite,
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.04,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '$slider_event events',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.workSans(
-                              color: vwhite,
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.04,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ]),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.4),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(
-                        Icons.sort_sharp,
-                        color: bfont,
-                        size: 28,
-                      ),
-                    )
-                  ],
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ]),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.5),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.sort_sharp,
+                          color: bfont,
+                          size: 28,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-                const EventsCard()
+                Expanded(child: const EventsCard())
               ]),
         ),
       ),

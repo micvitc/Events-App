@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:Login_ui/screens/loginpage.dart';
 import 'package:flutter/material.dart';
-import 'screens/loginpage.dart';
 
 //DE7BDE
 Color vwhite = Color(0xffF3F3F3);
