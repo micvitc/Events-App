@@ -9,6 +9,19 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart' as root_bundle;
 
+List<EventModel> eventList = [];
+// Fetching Json file.
+Future<List<EventModel>> ReadJsonData() async {
+  eventList = [];
+  final jsonresponse =
+      await root_bundle.rootBundle.loadString('jsonfile/testing-api.json');
+  final data = await json.decode(jsonresponse);
+  for (Map i in data) {
+    eventList.add(EventModel.fromJson(i));
+  }
+  return eventList;
+}
+
 class EventsCard extends StatefulWidget {
   const EventsCard({super.key});
 
@@ -39,19 +52,6 @@ class Cards extends StatefulWidget {
 }
 
 class _CardsState extends State<Cards> {
-  List<EventModel> eventList = [];
-
-  // Fetching Json file.
-  Future<List<EventModel>> ReadJsonData() async {
-    final jsondata =
-        await root_bundle.rootBundle.loadString('jsonfile/testing-api.json');
-    final data = json.decode(jsondata);
-    for (Map i in data) {
-      eventList.add(EventModel.fromJson(i));
-    }
-    return eventList;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(

@@ -1,27 +1,29 @@
 import 'package:Login_ui/main.dart';
+import 'package:Login_ui/models/EventModel.dart';
 import 'package:Login_ui/widgets/cards.dart';
 import 'package:Login_ui/widgets/slider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginpage.dart';
+import 'dart:core';
 
 String event_title = 'open mic';
 bool notification_bool = false;
-int slider_event = eventname.length;
+// int slider_event = eventname.length;
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
   'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
   'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
   'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
 ];
-final List<String> eventname = [
-  'Ideathon',
-  'makeathon',
-  'Event',
-  'nothing',
-  'appathon'
-];
+// final List<String> eventname = [
+//   'Ideathon',
+//   'makeathon',
+//   'Event',
+//   'nothing',
+//   'appathon'
+// ];
 
 class MyBehavior extends ScrollBehavior {
   @override
@@ -141,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              '$slider_event events',
+                              '${eventList.length} events',
                               textAlign: TextAlign.left,
                               style: GoogleFonts.workSans(
                                 color: vwhite,
@@ -151,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
@@ -164,17 +166,90 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
-                Container(
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                      autoPlay: true,
-                      aspectRatio: 1.2,
-                      enableInfiniteScroll: true,
-                      enlargeCenterPage: true,
-                    ),
-                    items: imageSliders,
-                  ),
-                ),
+                FutureBuilder(
+                    future: ReadJsonData(),
+                    builder:
+                        (context, AsyncSnapshot<List<EventModel>> snapshot) {
+                      if (!snapshot.hasData) {
+                        return CircularProgressIndicator();
+                      } else {
+                        return CarouselSlider.builder(
+                          itemCount: eventList.length,
+                          itemBuilder: (BuildContext, int index, int b) =>
+                              Flexible(
+                            flex: 5,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(30.0),
+                                ),
+                                child: Expanded(
+                                  flex: 3,
+                                  child: Flexible(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.rectangle,
+                                        /* image: DecorationImage(
+                      image: NetworkImage(), fit: BoxFit.cover),*/
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.elliptical(20, 20),
+                                            topRight:
+                                                Radius.elliptical(20, 20)),
+                                        color: Colors.white,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 12.0),
+                                                child: Text(
+                                                  snapshot
+                                                      .data![index].eventName
+                                                      .toString(),
+                                                  textAlign: TextAlign.left,
+                                                  style: GoogleFonts.workSans(
+                                                      color: bfont,
+                                                      fontSize: 26,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(),
+                                            Text(
+                                              (snapshot.data![index].eventDate)
+                                                  .toString(),
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.workSans(
+                                                color: bfont,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+
+                                            ///todo:implement current ui for event details in slider - for Rishabh
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )),
+                          ),
+                          options: CarouselOptions(
+                            autoPlay: true,
+                            aspectRatio: 1.2,
+                            enableInfiniteScroll: true,
+                            enlargeCenterPage: true,
+                          ),
+                        );
+                      }
+                    }),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
@@ -194,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              '$slider_event events',
+                              '${eventList.length} events',
                               textAlign: TextAlign.left,
                               style: GoogleFonts.workSans(
                                 color: vwhite,
