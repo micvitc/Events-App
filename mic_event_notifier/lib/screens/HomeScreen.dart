@@ -1,8 +1,10 @@
 import 'package:Login_ui/main.dart';
 import 'package:Login_ui/models/EventModel.dart';
+import 'package:Login_ui/utils/authentication.dart';
 import 'package:Login_ui/widgets/cards.dart';
 import 'package:Login_ui/widgets/slider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginpage.dart';
@@ -34,13 +36,46 @@ class MyBehavior extends ScrollBehavior {
 }
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key, required User user})
+      : _user = user,
+        super(key: key);
+
+  final User _user;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late User _user;
+  bool _isSigningOut = false;
+
+  Route _routeToSignInScreen() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => MyLogin(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(-1.0, 0.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    _user = widget._user;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,24 +108,28 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(
-                                'Hello User !',
-                                textAlign: TextAlign.left,
-                                style: GoogleFonts.workSans(
-                                  color: vwhite,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.05,
-                                  fontWeight: FontWeight.w400,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(
+                                  _user.displayName!,
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.workSans(
+                                    color: vwhite,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.05,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ),
                               Text(
-                                username.text,
+                                ' ${_user.email!}',
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.workSans(
                                     color: bfont,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
-                                            0.06,
+                                            0.05,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -102,20 +141,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Container(
                             width: 80,
                             child: ElevatedButton(
-                              child: Icon(
-                                Icons.notifications_none_sharp,
-                                size: MediaQuery.of(context).size.width * 0.075,
-                                color: bfont,
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffF0F0F0),
-                                  shape:
-                                      CircleBorder() /*const RoundedRectangleBorder(
+                                child: Icon(
+                                  Icons.notifications_none_sharp,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.075,
+                                  color: bfont,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xffF0F0F0),
+                                    shape:
+                                        CircleBorder() /*const RoundedRectangleBorder(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(180))),*/
-                                  ),
-                              onPressed: () {},
-                            ),
+                                    ),
+                                onPressed: () {}),
                           ),
                         ),
                       ],

@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^3.0.1
   carousel_slider: ^4.1.1
+  firebase_core: ^1.0.1
+  firebase_auth: ^1.0.1
+  google_sign_in: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +66,7 @@ flutter:
   assets:
     - assets/vivid-blurred-colorful-wallpaper-background.jpg
     - assets/homescreen.jpg
+    - assets/google_logo.png
     - jsonfile/
   # - images/a_dot_ham.jpeg
 
