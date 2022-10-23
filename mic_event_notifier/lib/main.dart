@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:Login_ui/screens/loginpage.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 //DE7BDE
@@ -9,8 +10,10 @@ Color vhome = Color(0xFFDE7ADE);
 Color bfont = Color(0xff2D2D2D);
 Color bdiv = Color(0xff7B7B7B);
 Color r = Color(0xffDB4437);
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {

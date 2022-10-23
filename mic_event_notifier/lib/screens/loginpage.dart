@@ -1,6 +1,7 @@
 import 'package:Login_ui/screens/HomeScreen.dart';
 import 'package:Login_ui/utils/authentication.dart';
 import 'package:Login_ui/widgets/google_sign_in_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,24 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FutureBuilder(
+      future: Authentication.initializeFirebase(context: context),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Error initializing Firebase');
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          return SizedBox();
+        }
+        return CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,21 +77,57 @@ class _MyLoginState extends State<MyLogin> {
             const SizedBox(
               height: 190,
             ),
-            FutureBuilder(
-              future: Authentication.initializeFirebase(context: context),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Text('Error initializing Firebase');
-                } else if (snapshot.connectionState == ConnectionState.done) {
-                  return GoogleSignInButton();
-                }
-                return const CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Colors.black,
-                  ),
-                );
-              },
+            Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: OutlinedButton(
+            style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.white),
+            shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
             ),
+            ),
+            ),
+            onPressed: () async {
+            User? user =
+            await Authentication.signInWithGoogle(context: context);
+
+            if (user != null) {
+            Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+            builder: (context) => HomeScreen(
+            user: user,
+            ),
+            ),
+            );
+            }
+            },
+            child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+    child: Row(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+    Image(
+    image: AssetImage("assets/google_logo.png"),
+    height: 35.0,
+    ),
+    Padding(
+    padding: const EdgeInsets.only(left: 10),
+    child: Text(
+    'Sign in with Google',
+    style: TextStyle(
+    fontSize: 20,
+    color: Colors.black54,
+    fontWeight: FontWeight.w600,
+    ),
+    ),
+    )
+    ],
+    ),
+    ),
+    ),
+    )
           ],
         ),
       ),

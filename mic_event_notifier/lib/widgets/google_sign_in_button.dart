@@ -2,24 +2,17 @@ import 'package:Login_ui/screens/HomeScreen.dart';
 import 'package:Login_ui/utils/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 class GoogleSignInButton extends StatefulWidget {
   @override
   _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
 }
 
 class _GoogleSignInButtonState extends State<GoogleSignInButton> {
-  bool _isSigningIn = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
-      child: _isSigningIn
-          ? CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            )
-          : OutlinedButton(
+      child: OutlinedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.white),
                 shape: MaterialStateProperty.all(
@@ -29,16 +22,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 ),
               ),
               onPressed: () async {
-                setState(() {
-                  _isSigningIn = true;
-                });
-                User? user =
-                    await Authentication.signInWithGoogle(context: context);
-
-                setState(() {
-                  _isSigningIn = false;
-                });
-
+                User? user = await Authentication.signInWithGoogle(context: context);
                 if (user != null) {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
@@ -47,6 +31,9 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                       ),
                     ),
                   );
+                }
+                else{
+                  print("no firebase initialised");
                 }
               },
               child: Padding(

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1011326149621",
-    "project_id": "mic-eventapp",
-    "storage_bucket": "mic-eventapp.appspot.com"
+    "project_number": "527103099361",
+    "project_id": "mic-event-notifier",
+    "storage_bucket": "mic-event-notifier.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1011326149621:android:2ca457f630ef036142b6bc",
+        "mobilesdk_app_id": "1:527103099361:android:b27b4b3f831f3e86a252a0",
         "android_client_info": {
-          "package_name": "com.micvitc.eventnotifier"
+          "package_name": "com.example.mic_event_notifier"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1011326149621-02mo6ms324gn37te45qtc02n1c3civ9p.apps.googleusercontent.com",
+          "client_id": "527103099361-hkkf8n05f4kohrv7i135d7c4r9vdaac3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBV7INiDRzSb-fwAfj_3MgdzA4HxEeDFhE"
+          "current_key": "AIzaSyBdgBWvjDqsm3TXSKR0CeWF0-s9X92Vwlw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1011326149621-02mo6ms324gn37te45qtc02n1c3civ9p.apps.googleusercontent.com",
+              "client_id": "527103099361-hkkf8n05f4kohrv7i135d7c4r9vdaac3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
