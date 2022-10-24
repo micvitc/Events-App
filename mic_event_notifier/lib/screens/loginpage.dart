@@ -45,40 +45,44 @@ class _MyLoginState extends State<MyLogin> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Stack(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(left: 35, top: 180, right: 35),
-                  child: Text(
-                    'VITCC Events',
-                    style: GoogleFonts.nunito(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      textStyle: Theme.of(context).textTheme.headline4,
-                      fontSize: 48,
-                      fontWeight: FontWeight.w700,
+            Align(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(left: 35, top: 180, right: 35),
+                      child: Text(
+                        'VITCC Events',
+                        style: GoogleFonts.nunito(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 48,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
-                  child: Text(
-                    'All events in one place',
-                    style: GoogleFonts.nunito(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      textStyle: Theme.of(context).textTheme.headline4,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+                    Container(
+                      padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
+                      child: Text(
+                        'All events in one place',
+                        style: GoogleFonts.nunito(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 190,
+              ),
             ),
             Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
+            padding: const EdgeInsets.only(bottom: 50),
             child: OutlinedButton(
             style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.white),
