@@ -1,4 +1,6 @@
 import 'package:Login_ui/screens/HomeScreen.dart';
+import 'package:Login_ui/screens/loginpage.dart';
+import 'package:Login_ui/widgets/google_sign_in_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +29,9 @@ class Authentication {
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(user: user)
+          builder: (context) =>
+          (user!.email!.contains('vitstudent.ac.in'))?
+              HomeScreen(user: user):MyLogin()
         ),
       )
       ;

@@ -24,8 +24,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               ),
               onPressed: () async {
                 User? user = await Authentication.signInWithGoogle(context: context);
-                bool vitcheck = user!.email!.contains('vitstudent.ac.in');
-                if (user != null&& vitcheck==true) {
+                if (user != null&& user!.email!.contains('vitstudent.ac.in')) {
                    {
                      setState(() {
                        loginroute=1;
