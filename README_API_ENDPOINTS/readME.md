@@ -59,7 +59,7 @@ Usually response methods consist of data in HTML, CSV, JSON, JPEG(or any form of
 
 **This project contains 3 endpoints at present. Below is a documentation of using those endpoints**
 
-**How to use those endpoints?**
+**How to use those endpoints?**\
 **1. [http://35.171.162.185/api/events](http://35.171.162.185/api/events) - Retrieves all the information of events inserted by the admin.**
 
 What information will the “**/api/events”** retrieve**?**
