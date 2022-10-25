@@ -2,6 +2,7 @@ import 'package:Login_ui/screens/HomeScreen.dart';
 import 'package:Login_ui/utils/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+int loginroute = 0;
 class GoogleSignInButton extends StatefulWidget {
   @override
   _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
@@ -23,14 +24,17 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               ),
               onPressed: () async {
                 User? user = await Authentication.signInWithGoogle(context: context);
-                if (user != null) {
-                  Navigator.of(context).pushReplacement(
+                bool vitcheck = user!.email!.contains('vitstudent.ac.in');
+                if (user != null&& vitcheck==true) {
+                   {
+                    Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => HomeScreen(
                         user: user,
                       ),
                     ),
                   );
+                  }
                 }
                 else{
                   print("no firebase initialised");
