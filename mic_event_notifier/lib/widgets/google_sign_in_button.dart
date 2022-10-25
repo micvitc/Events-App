@@ -50,7 +50,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
             Fluttertoast.showToast(
                 msg: "Invalid authentication",
                 toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
+                gravity: ToastGravity.BOTTOM,
                 timeInSecForIosWeb: 1,
                 backgroundColor: Color.fromARGB(255, 255, 255, 255),
                 textColor: Color.fromARGB(255, 0, 0, 0),
