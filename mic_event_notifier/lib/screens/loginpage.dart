@@ -81,7 +81,14 @@ class _MyLoginState extends State<MyLogin> {
                 ),
               ),
             ),
-            GoogleSignInButton()
+            GoogleSignInButton(),
+ /*           loginerror==1?
+                Text('You are not Allowed to use this application',
+                style: TextStyle(
+                  color: Colors.red
+                ),
+                ):
+                SizedBox()*/
           ],
         ),
       ),
