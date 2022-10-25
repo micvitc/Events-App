@@ -31,7 +31,7 @@ Usually response methods consist of data in HTML, CSV, JSON, JPEG(or any form of
 
 |**Attributes defined**|**Description**|**Input type**|**Necessity**|
 | :- | :- | :- | :- |
-|**event\_id**|Uniquely identifies an event|String|Required and have to be unique|
+|**event\_id**|Uniquely identifies an event|Integer|Required and have to be unique|
 |**event\_name** |Name of the event|String|Required|
 |**event\_date**|Date the event is held|Datetime|Required|
 |**event\_venue**|Venue/Location the event is held|String|Required |
@@ -87,7 +87,7 @@ For example, to access event id = 2:
 
 **Note: <school\_name> field is dynamic. School name passed on to the URL replacing <school\_name> would result in fetching a list of events with respect to the school’s name provided.** 
 
-*This endpoint doesn’t return group by events, instead it only returns a list of events hosted/managed by that school.*
+*This endpoint doesn’t return group by events, instead it only returns a new list of events hosted/managed by that school.*
 
 For example, to access only the events organized by “QBIT”:
 
