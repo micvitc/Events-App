@@ -56,7 +56,7 @@ class _MyLoginState extends State<MyLogin> {
                   children: [
                     Container(
                       padding:
-                          const EdgeInsets.only(left: 35, top: 180, right: 35),
+                          const EdgeInsets.only(left: 35, top: 160, right: 35),
                       child: Text(
                         'VITCC Events',
                         style: GoogleFonts.nunito(
@@ -69,7 +69,7 @@ class _MyLoginState extends State<MyLogin> {
                     ),
                     Container(
                       padding:
-                          const EdgeInsets.only(left: 40, top: 240, right: 35),
+                          const EdgeInsets.only(left: 40, top: 210, right: 35),
                       child: Text(
                         'All events in one place',
                         style: GoogleFonts.nunito(
@@ -84,7 +84,14 @@ class _MyLoginState extends State<MyLogin> {
                 ),
               ),
             ),
-            GoogleSignInButton()
+            GoogleSignInButton(),
+            /*           loginerror==1?
+                Text('You are not Allowed to use this application',
+                style: TextStyle(
+                  color: Colors.red
+                ),
+                ):
+                SizedBox()*/
           ],
         ),
       ),
