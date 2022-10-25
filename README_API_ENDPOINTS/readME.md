@@ -6,7 +6,7 @@
 
 “git clone <https://github.com/micvitc/Events-App.git>” to create a local repository inside your PC
 
-“git pull” the update recent changes from “[micvitc](https://github.com/micvitc)/[**Events-App**](https://github.com/micvitc/Events-App)” repository.(has to be done frequently to ensure the bugs/new features are updated to your local repository)
+“git pull” to update recent changes from “[micvitc](https://github.com/micvitc)/[**Events-App**](https://github.com/micvitc/Events-App)” repository.(has to be done frequently to ensure the bugs/new features are updated to your local repository)
 
 **About REST APIs:**
 
@@ -77,7 +77,7 @@ All these attributes of each and every event stored in the database will be oper
 
 **2. [http://35.171.162.185:5000/api/events/<id](http://35.171.162.185:5000/api/events/%3cid)> - Retrieves only the information of the event identified by “event\_id”.** 
 
-**Note: <id> is dynamic. Event id passed on to the URL replacing <id> would result in fetching only a particular event information with respect to the event id provided.**
+**Note: &lt;id&gt; is dynamic. Event id passed on to the URL replacing &lt;id&gt; would result in fetching only a particular event information with respect to the event id provided.**
 
 For example, to access event id = 2:
 
