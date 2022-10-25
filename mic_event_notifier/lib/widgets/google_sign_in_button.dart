@@ -27,6 +27,9 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 bool vitcheck = user!.email!.contains('vitstudent.ac.in');
                 if (user != null&& vitcheck==true) {
                    {
+                     setState(() {
+                       loginroute=1;
+                     });
                     Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => HomeScreen(
