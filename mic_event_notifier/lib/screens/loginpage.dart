@@ -33,6 +33,7 @@ class _MyLoginState extends State<MyLogin> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,7 +55,8 @@ class _MyLoginState extends State<MyLogin> {
                 child: Stack(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(left: 35, top: 180, right: 35),
+                      padding:
+                          const EdgeInsets.only(left: 35, top: 160, right: 35),
                       child: Text(
                         'VITCC Events',
                         style: GoogleFonts.nunito(
@@ -66,7 +68,8 @@ class _MyLoginState extends State<MyLogin> {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(left: 40, top: 240, right: 35),
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 210, right: 35),
                       child: Text(
                         'All events in one place',
                         style: GoogleFonts.nunito(
@@ -82,7 +85,7 @@ class _MyLoginState extends State<MyLogin> {
               ),
             ),
             GoogleSignInButton(),
- /*           loginerror==1?
+            /*           loginerror==1?
                 Text('You are not Allowed to use this application',
                 style: TextStyle(
                   color: Colors.red
