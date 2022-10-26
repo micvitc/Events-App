@@ -36,7 +36,7 @@ class _EventsCardState extends State<EventsCard> {
       child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.width,
-          padding: new EdgeInsets.all(10.0),
+          padding: new EdgeInsets.all(8.0),
           child: Cards()),
     );
   }
@@ -70,14 +70,23 @@ class _CardsState extends State<Cards> {
                       ListTile(
                         title: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            snapshot.data![index].eventName.toString(),
-                            style: GoogleFonts.workSans(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 25,
+                          child: Column(children: <Widget>[
+                            Text(
+                              snapshot.data![index].eventName.toString(),
+                              style: GoogleFonts.workSans(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22,
+                              ),
                             ),
-                          ),
+                            Divider(
+                              color: bdiv,
+                              height: 10,
+                              thickness: 0.5,
+                              indent: 20,
+                              endIndent: 20,
+                            ),
+                          ]),
                         ),
                         subtitle: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -106,13 +115,6 @@ class _CardsState extends State<Cards> {
                                     : bdiv),
                           ),
                         ),
-                      ),
-                      Divider(
-                        color: bdiv,
-                        height: 10,
-                        thickness: 0.5,
-                        indent: 20,
-                        endIndent: 20,
                       ),
                     ]),
                   );

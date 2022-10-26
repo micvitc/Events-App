@@ -117,20 +117,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: vwhite,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
-                                            0.05,
+                                            0.042,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
-                              Text(
-                                ' ${_user.email!}',
-                                textAlign: TextAlign.left,
-                                style: GoogleFonts.workSans(
-                                    color: bfont,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.05,
-                                    fontWeight: FontWeight.bold),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    right: MediaQuery.of(context).size.width *
+                                        0.03),
+                                child: Text(
+                                  ' ${_user.email!}',
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.workSans(
+                                      color: bfont,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.032,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ],
                           ),
@@ -173,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Events u have registered for',
+                              'Events you have registered for',
                               textAlign: TextAlign.left,
                               style: GoogleFonts.workSans(
                                   color: bfont,
@@ -204,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 FutureBuilder(
                     future: ReadJsonData(),
                     builder:
@@ -215,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return CarouselSlider.builder(
                           itemCount: eventList.length,
                           itemBuilder: (BuildContext, int index, int b) =>
-                              Flexible(
+                              Expanded(
                             flex: 5,
                             child: ClipRRect(
                                 borderRadius: BorderRadius.all(
@@ -228,11 +233,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         /* image: DecorationImage(
-                      image: NetworkImage(), fit: BoxFit.cover),*/
+                       image: NetworkImage(), fit: BoxFit.cover),*/
                                         borderRadius: BorderRadius.only(
-                                            topLeft: Radius.elliptical(20, 20),
+                                            topLeft: Radius.elliptical(10, 10),
                                             topRight:
-                                                Radius.elliptical(20, 20)),
+                                                Radius.elliptical(10, 10)),
                                         color: Colors.white,
                                       ),
                                       child: Padding(
@@ -261,7 +266,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(),
                                             Text(
                                               (snapshot.data![index].eventDate)
                                                   .toString(),
@@ -271,8 +275,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 fontSize: 15,
                                               ),
                                             ),
-
-                                            ///todo:implement current ui for event details in slider - for Rishabh
                                           ],
                                         ),
                                       ),
@@ -282,14 +284,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           options: CarouselOptions(
                             autoPlay: true,
-                            aspectRatio: 1.2,
+                            aspectRatio: 1.6,
                             enableInfiniteScroll: true,
                             enlargeCenterPage: true,
                           ),
                         );
                       }
                     }),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Row(
