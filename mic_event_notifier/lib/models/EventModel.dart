@@ -1,11 +1,11 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/rendering.dart';
 
 /// _id : {"$oid":"6326b921c1d817a37bef0148"}
 /// event_id : "1"
 /// event_name : "Spin it win it"
-/// event_date : {"$date":{"$numberLong":"1664064000000"}}
+/// event_date : {"$date":"1664064000000"}
 /// event_venue : "MG auditorium"
 /// event_host : ["Microsoft innovations club"]
 /// event_coordinators : ["A","B","C"]
@@ -36,7 +36,7 @@ class EventModel {
     _id = json['_id'] != null ? Id.fromJson(json['_id']) : null;
     _eventId = json['event_id'];
     _eventName = json['event_name'];
-    _eventDate = int.parse(json["event_date"]["\$date"]["\$numberLong"]);
+    _eventDate = int.parse(json["event_date"]["\$date"]);
     // _eventDate = json['event_date'] != null
     //     ? EventDate.fromJson(json['event_date'])
     //     : null;
@@ -46,7 +46,8 @@ class EventModel {
     _eventCoordinators = json['event_coordinators'] != null
         ? json['event_coordinators'].cast<String>()
         : [];
-    print(_eventCoordinators);
+    // print(_eventDate);
+    // print(_eventCoordinators);
     _schoolName = json['school_name'];
   }
   Id? _id;
