@@ -26,7 +26,8 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
             ),
           ),
         ),
-        onPressed: () async {
+        onPressed: () async
+        {
           User? user = await Authentication.signInWithGoogle(context: context);
           bool vitcheck = user!.email!.contains('vitstudent.ac.in');
           if (user != null && vitcheck == true) {
@@ -37,7 +38,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => HomeScreen(
-                    user: user,
+                    user: user!,
                   ),
                 ),
               );
@@ -55,7 +56,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 backgroundColor: Color.fromARGB(255, 255, 255, 255),
                 textColor: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 16.0);
-            print(user.email);
+            print(user!.email);
             print("no firebase initialised");
           }
         },
