@@ -3,6 +3,7 @@ import 'package:Login_ui/utils/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 int loginerror = 0;
 
@@ -49,7 +50,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
             Fluttertoast.showToast(
                 msg: "Invalid authentication",
                 toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
+                gravity: ToastGravity.BOTTOM,
                 timeInSecForIosWeb: 1,
                 backgroundColor: Color.fromARGB(255, 255, 255, 255),
                 textColor: Color.fromARGB(255, 0, 0, 0),
@@ -72,10 +73,11 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
                   'Sign in with Google',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w600,
+                  style: GoogleFonts.nunito(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    textStyle: Theme.of(context).textTheme.headline4,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               )
