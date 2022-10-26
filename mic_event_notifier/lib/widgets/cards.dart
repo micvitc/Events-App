@@ -3,6 +3,7 @@
 import 'package:Login_ui/models/EventModel.dart';
 import 'package:Login_ui/screens/HomeScreen.dart';
 import 'package:Login_ui/main.dart';
+import 'package:Login_ui/services/api_services.dart';
 import 'package:Login_ui/services/notif_services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,16 +13,26 @@ import 'package:Login_ui/services/dater.dart';
 import 'package:flutter/services.dart' as root_bundle;
 
 List<EventModel> eventList = [];
+
 int count = 0;
-// Fetching Json file.
+
+// // Fetching Json file.
+// Future<List<EventModel>> ReadJsonData() async {
+//   eventList = [];
+//   final jsonresponse =
+//       await root_bundle.rootBundle.loadString('jsonfile/testing-api.json');
+//   final data = await json.decode(jsonresponse);
+//   for (Map i in data) {
+//     count += 1;
+//     eventList.add(EventModel.fromJson(i));
+//   }
+//   return eventList;
+// }
+
 Future<List<EventModel>> ReadJsonData() async {
-  eventList = [];
-  final jsonresponse =
-      await root_bundle.rootBundle.loadString('jsonfile/testing-api.json');
-  final data = await json.decode(jsonresponse);
-  for (Map i in data) {
+  eventList = await APIServices.getEvents();
+  for (var i in eventList) {
     count += 1;
-    eventList.add(EventModel.fromJson(i));
   }
   return eventList;
 }
@@ -79,7 +90,7 @@ class _CardsState extends State<Cards> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ReadJsonData(),
+        future: APIServices.getEvents(),
         builder: (context, AsyncSnapshot<List<EventModel>> snapshot) {
           if (!snapshot.hasData) {
             return CircularProgressIndicator();

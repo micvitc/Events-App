@@ -1,6 +1,6 @@
 // import 'dart:ffi';
 
-import 'package:flutter/rendering.dart';
+// import 'package:flutter/rendering.dart';
 
 /// _id : {"$oid":"6326b921c1d817a37bef0148"}
 /// event_id : "1"
@@ -36,7 +36,7 @@ class EventModel {
     _id = json['_id'] != null ? Id.fromJson(json['_id']) : null;
     _eventId = json['event_id'];
     _eventName = json['event_name'];
-    _eventDate = int.parse(json["event_date"]["\$date"]);
+    _eventDate = json["event_date"]["\$date"];
     // _eventDate = json['event_date'] != null
     //     ? EventDate.fromJson(json['event_date'])
     //     : null;
