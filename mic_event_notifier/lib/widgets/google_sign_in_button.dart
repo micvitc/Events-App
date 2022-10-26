@@ -26,12 +26,11 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
             ),
           ),
         ),
-        onPressed: () async {
+        onPressed: () async
+        {
           User? user = await Authentication.signInWithGoogle(context: context);
           bool vitcheck = user!.email!.contains('vitstudent.ac.in');
-          //if (user != null && vitcheck == true) {
-
-          if (user != null) {
+          if (user != null && vitcheck == true) {
             {
               setState(() {
                 loginerror = 0;
@@ -39,27 +38,27 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => HomeScreen(
-                    user: user,
+                    user: user!,
                   ),
                 ),
               );
             }
           }
-          // if (vitcheck == false) {
-          //   Authentication.signOut(context: context);
-          //   setState(() {
-          //     loginerror = 1;
-          //   });
-          //   Fluttertoast.showToast(
-          //       msg: "Invalid authentication",
-          //       toastLength: Toast.LENGTH_SHORT,
-          //       gravity: ToastGravity.BOTTOM,
-          //       timeInSecForIosWeb: 1,
-          //       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          //       textColor: Color.fromARGB(255, 0, 0, 0),
-          //       fontSize: 16.0);
-          //   print("no firebase initialised");
-          // }
+          if (vitcheck == false&&user!=null) {
+            setState(() {
+              loginerror = 1;
+            });
+            Fluttertoast.showToast(
+                msg: "Invalid authentication",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                textColor: Color.fromARGB(255, 0, 0, 0),
+                fontSize: 16.0);
+            print(user!.email);
+            print("no firebase initialised");
+          }
         },
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
