@@ -1,5 +1,6 @@
 import 'package:Login_ui/main.dart';
 import 'package:Login_ui/models/EventModel.dart';
+import 'package:Login_ui/services/api_services.dart';
 import 'package:Login_ui/widgets/cards.dart';
 import 'package:Login_ui/services/dater.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -8,8 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginpage.dart';
 import 'dart:core';
+import 'package:Login_ui/widgets/cards.dart';
 
-String event_title = 'open mic';
+// String event_title = 'open mic';
 // int slider_event = eventname.length;
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -25,6 +27,8 @@ final List<String> imgList = [
 //   'appathon'
 // ];
 
+List<EventModel> eventList = [];
+
 class MyBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
@@ -32,6 +36,8 @@ class MyBehavior extends ScrollBehavior {
     return child;
   }
 }
+
+int count = 0;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key, required User user})
@@ -47,6 +53,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late User _user;
   bool _isSigningOut = false;
+
+  void setEventList() async {
+    eventList = await APIServices.getEvents();
+    count = eventList.length;
+  }
 
   Route _routeToSignInScreen() {
     return PageRouteBuilder(
@@ -70,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _user = widget._user;
-
+    setEventList();
     super.initState();
   }
 
@@ -190,16 +201,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MediaQuery.of(context).size.width * 0.04,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              '${eventList.length} events',
-                              textAlign: TextAlign.left,
-                              style: GoogleFonts.workSans(
-                                color: vwhite,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.04,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            )
+                            // Text(
+                            //   '${count} events',
+                            //   textAlign: TextAlign.left,
+                            //   style: GoogleFonts.workSans(
+                            //     color: vwhite,
+                            //     fontSize:
+                            //         MediaQuery.of(context).size.width * 0.04,
+                            //     fontWeight: FontWeight.w400,
+                            //   ),
+                            // )
                           ]),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                       Align(
@@ -215,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
                 FutureBuilder(
-                    future: ReadJsonData(),
+                    future: APIServices.getEvents(),
                     builder:
                         (context, AsyncSnapshot<List<EventModel>> snapshot) {
                       if (!snapshot.hasData) {
@@ -315,16 +326,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MediaQuery.of(context).size.width * 0.04,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              '${eventList.length} events',
-                              textAlign: TextAlign.left,
-                              style: GoogleFonts.workSans(
-                                color: vwhite,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.04,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            )
+                            // Text(
+                            //   '${count} events',
+                            //   textAlign: TextAlign.left,
+                            //   style: GoogleFonts.workSans(
+                            //     color: vwhite,
+                            //     fontSize:
+                            //         MediaQuery.of(context).size.width * 0.04,
+                            //     fontWeight: FontWeight.w400,
+                            //   ),
+                            // )
                           ]),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.5),
                       Align(

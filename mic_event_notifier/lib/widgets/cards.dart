@@ -12,8 +12,6 @@ import 'package:Login_ui/services/dater.dart';
 
 import 'package:flutter/services.dart' as root_bundle;
 
-List<EventModel> eventList = [];
-
 int count = 0;
 
 // // Fetching Json file.
@@ -30,11 +28,21 @@ int count = 0;
 // }
 
 Future<List<EventModel>> ReadJsonData() async {
-  eventList = await APIServices.getEvents();
+  List<EventModel> eventList = await APIServices.getEvents();
+  count = 0;
   for (var i in eventList) {
     count += 1;
   }
   return eventList;
+}
+
+Future<int> getLen() async {
+  List<EventModel> eventList = await APIServices.getEvents();
+  count = 0;
+  for (var i in eventList) {
+    count += 1;
+  }
+  return count;
 }
 
 List<bool> notif = List<bool>.filled(count, false);
@@ -90,13 +98,14 @@ class _CardsState extends State<Cards> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: APIServices.getEvents(),
+        // future: APIServices.getEvents(),
+        future: ReadJsonData(),
         builder: (context, AsyncSnapshot<List<EventModel>> snapshot) {
           if (!snapshot.hasData) {
             return CircularProgressIndicator();
           } else {
             return ListView.builder(
-                itemCount: eventList.length,
+                itemCount: count,
                 itemBuilder: (context, index) {
                   return Card(
                     shape: RoundedRectangleBorder(
