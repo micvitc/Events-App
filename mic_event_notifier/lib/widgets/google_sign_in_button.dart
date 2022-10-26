@@ -42,8 +42,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               );
             }
           }
-          if (vitcheck == false) {
-            Authentication.signOut(context: context);
+          if (vitcheck == false&&user!=null) {
             setState(() {
               loginerror = 1;
             });
@@ -55,6 +54,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 backgroundColor: Color.fromARGB(255, 255, 255, 255),
                 textColor: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 16.0);
+            print(user.email);
             print("no firebase initialised");
           }
         },
