@@ -137,7 +137,7 @@ class _CardsState extends State<Cards> {
                           ),
                         ),
                         trailing: Padding(
-                          padding: const EdgeInsets.only(left: 20, bottom: 20),
+                          padding: const EdgeInsets.only(left: 20, top: 10),
                           child: IconButton(
                             onPressed: () {
                               setNotif(snapshot.data![index], index);
@@ -145,6 +145,7 @@ class _CardsState extends State<Cards> {
                               // setNotif(int.parse(idd));
                             },
                             icon: Icon(Icons.check_circle,
+                                size: 35,
                                 color: (notif[index] == true) ? Colors.blueAccent : bdiv),
                           ),
                         ),
@@ -155,6 +156,31 @@ class _CardsState extends State<Cards> {
                         thickness: 0.5,
                         indent: 20,
                         endIndent: 20,
+                      ),
+                      ListTile(
+                        title: Padding(
+                          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 120.0, 0.0),
+                          child: Column(children: <Widget>[
+                            Text(
+                              Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.workSans(
+                                color: bdiv,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ]),
+                        ),
+                        leading:Padding(
+                          padding: const EdgeInsets.only(bottom: 6.0),
+                          //child: Icon(Icons.calendar_today_outlined),
+                          child: IconButton(
+                            onPressed: () {
+                            },
+                            icon: Icon(Icons.calendar_today_outlined,),
+                          ),
+                        ),
                       ),
                     ]),
                   );
