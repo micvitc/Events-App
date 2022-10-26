@@ -6,7 +6,7 @@
 
 “git clone <https://github.com/micvitc/Events-App.git>” to create a local repository inside your PC
 
-“git pull” the update recent changes from “[micvitc](https://github.com/micvitc)/[**Events-App**](https://github.com/micvitc/Events-App)” repository.(has to be done frequently to ensure the bugs/new features are updated to your local repository)
+“git pull” to update recent changes from “[micvitc](https://github.com/micvitc)/[**Events-App**](https://github.com/micvitc/Events-App)” repository.(has to be done frequently to ensure the bugs/new features are updated to your local repository)
 
 **About REST APIs:**
 
@@ -31,7 +31,7 @@ Usually response methods consist of data in HTML, CSV, JSON, JPEG(or any form of
 
 |**Attributes defined**|**Description**|**Input type**|**Necessity**|
 | :- | :- | :- | :- |
-|**event\_id**|Uniquely identifies an event|String|Required and have to be unique|
+|**event\_id**|Uniquely identifies an event|Integer|Required and have to be unique|
 |**event\_name** |Name of the event|String|Required|
 |**event\_date**|Date the event is held|Datetime|Required|
 |**event\_venue**|Venue/Location the event is held|String|Required |
@@ -59,8 +59,8 @@ Usually response methods consist of data in HTML, CSV, JSON, JPEG(or any form of
 
 **This project contains 3 endpoints at present. Below is a documentation of using those endpoints**
 
-**How to use those endpoints?**
-**1. [http://<localhost>/api/events]() - Retrieves all the information of events inserted by the admin.**
+**How to use those endpoints?**\
+**1. [http://35.171.162.185/api/events](http://35.171.162.185/api/events) - Retrieves all the information of events inserted by the admin.**
 
 What information will the “**/api/events”** retrieve**?**
 
@@ -75,21 +75,21 @@ What information will the “**/api/events”** retrieve**?**
 All these attributes of each and every event stored in the database will be operated according to the given CURD operations. 
 
 
-**2. [http://127.0.0.1:5000/api/events/<id](http://127.0.0.1:5000/api/events/%3cid)> - Retrieves only the information of the event identified by “event\_id”.** 
+**2. [http://35.171.162.185:5000/api/events/<id](http://35.171.162.185:5000/api/events/%3cid)> - Retrieves only the information of the event identified by “event\_id”.** 
 
-**Note: <id> is dynamic. Event id passed on to the URL replacing <id> would result in fetching only a particular event information with respect to the event id provided.**
+**Note: &lt;id&gt; is dynamic. Event id passed on to the URL replacing &lt;id&gt; would result in fetching only a particular event information with respect to the event id provided.**
 
 For example, to access event id = 2:
 
-<http://127.0.0.1:5000/api/events/2> 
+<http://35.171.162.185:5000/api/events/2> 
 
-**3. [http://127.0.0.1:5000/api/events/filter/<school_name](http://127.0.0.1:5000/api/events/filter/%3cschool_name)> - Retrieves event information based on “school name”.** 
+**3. [http://35.171.162.185:5000/api/events/filter/<school_name](http://35.171.162.185:5000/api/events/filter/%3cschool_name)> - Retrieves event information based on “school name”.** 
 
 **Note: <school\_name> field is dynamic. School name passed on to the URL replacing <school\_name> would result in fetching a list of events with respect to the school’s name provided.** 
 
-*This endpoint doesn’t return group by events, instead it only returns a list of events hosted/managed by that school.*
+*This endpoint doesn’t return group by events, instead it only returns a new list of events hosted/managed by that school.*
 
 For example, to access only the events organized by “QBIT”:
 
-<http://127.0.0.1:5000/api/events/filter/qbit>  
+<http://35.171.162.185:5000/api/events/filter/qbit>  
 
