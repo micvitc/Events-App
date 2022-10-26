@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Icon(
                           Icons.sort_sharp,
                           color: bfont,
-                          size: 28,
+                          size: MediaQuery.of(context).size.width * 0.08,
                         ),
                       )
                     ],
@@ -260,7 +260,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   textAlign: TextAlign.left,
                                                   style: GoogleFonts.workSans(
                                                       color: bfont,
-                                                      fontSize: 26,
+                                                      fontSize:
+                                                        MediaQuery.of(context).size.width * 0.07,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -272,7 +273,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               textAlign: TextAlign.left,
                                               style: GoogleFonts.workSans(
                                                 color: bfont,
-                                                fontSize: 15,
+                                                fontSize:
+                                                  MediaQuery.of(context).size.width * 0.04,
                                               ),
                                             ),
                                           ],
@@ -284,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           options: CarouselOptions(
                             autoPlay: true,
-                            aspectRatio: 1.6,
+                            aspectRatio: MediaQuery.of(context).size.height * 0.0019,
                             enableInfiniteScroll: true,
                             enlargeCenterPage: true,
                           ),
@@ -326,7 +328,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Icon(
                           Icons.sort_sharp,
                           color: bfont,
-                          size: 28,
+                          size: MediaQuery.of(context).size.width * 0.08,
                         ),
                       )
                     ],
