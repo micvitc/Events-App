@@ -207,16 +207,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
-                            // Text(
-                            //   '${count} events',
-                            //   textAlign: TextAlign.left,
-                            //   style: GoogleFonts.workSans(
-                            //     color: vwhite,
-                            //     fontSize:
-                            //         MediaQuery.of(context).size.width * 0.04,
-                            //     fontWeight: FontWeight.w400,
-                            //   ),
-                            // )
                           ]),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.22),
                       Align(
