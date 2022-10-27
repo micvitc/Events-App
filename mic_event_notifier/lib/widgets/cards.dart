@@ -135,7 +135,6 @@ class _CardsState extends State<Cards> {
         //     1,
         //   );
         // }
-        
       }
       else {
         NotificationService().cancelNotification(int.parse(event.eventId.toString()));
