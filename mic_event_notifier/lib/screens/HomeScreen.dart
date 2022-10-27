@@ -134,13 +134,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   top: MediaQuery.of(context).size.width * 0.03,
                                 ),
                                 child: Text(
-                                  _user.displayName!,
+                                  _user.displayName!.substring(0, _user.displayName!.length-9),
+                                  //_user.displayName!,
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.workSans(
                                     color: vwhite,
                                     fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.052,
+                                        MediaQuery.of(context).size.width * 0.052,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -218,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.22),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
@@ -346,7 +346,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.44),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
+                      Align(
+                        child: IconButton(onPressed: (){}, icon: Icon(Icons.refresh_sharp)),
+                      ),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
@@ -354,7 +357,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: bfont,
                           size: MediaQuery.of(context).size.width * 0.08,
                         ),
-                      )
+                      ),
+                      //SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+
                     ],
                   ),
                 ),
