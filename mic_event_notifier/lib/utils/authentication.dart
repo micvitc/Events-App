@@ -26,7 +26,7 @@ class Authentication {
 
     User? user = FirebaseAuth.instance.currentUser;
 
-    if (user != null&&user!.email!.contains('vitstudent.ac.in')) {
+    if (user != null&&user.email!.contains('vitstudent.ac.in')) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) =>
