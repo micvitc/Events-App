@@ -242,13 +242,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(width: MediaQuery.of(context).size.width * 0.12),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Icon(
-                          Icons.sort_sharp,
-                          color: bfont,
-                          size: MediaQuery.of(context).size.width * 0.08,
-                        ),
-                      )
-                    ],
+                        child: IconButton(
+                          onPressed: () {
+                          },
+                          icon: Icon(Icons.sort_sharp,
+                            color: bfont,
+                            size: MediaQuery.of(context).size.width * 0.08,),)
+                      ),],
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
@@ -312,6 +312,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(),
+                                                IconButton(onPressed: () {
+                                                },
+                                                  icon: Icon(Icons.calendar_today_outlined),),
                                                 Text(
                                                   Dater(
                                                       millis: int.parse(snapshot
@@ -330,6 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ],
                                             ),
                                           ),
+
                                         ),
                                       ),
                                     )),
@@ -382,11 +386,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Icon(
-                          Icons.sort_sharp,
-                          color: bfont,
-                          size: MediaQuery.of(context).size.width * 0.08,
-                        ),
+                        child: IconButton(
+                          onPressed: () {
+                          },
+                          icon: Icon(Icons.sort_sharp,
+                            color: bfont,
+                            size: MediaQuery.of(context).size.width * 0.08,),)
                       ),
                       //SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                     ],
