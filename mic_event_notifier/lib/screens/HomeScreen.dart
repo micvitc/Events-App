@@ -129,7 +129,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 5),
+                                padding: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width * 0.03,
+                                  top: MediaQuery.of(context).size.width * 0.03,
+                                ),
                                 child: Text(
                                   _user.displayName!,
                                   textAlign: TextAlign.left,
@@ -137,8 +140,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: vwhite,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
-                                            0.05,
-                                    fontWeight: FontWeight.w400,
+                                            0.052,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),
@@ -149,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: bfont,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
-                                            0.05,
+                                            0.042,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -185,7 +188,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MediaQuery.of(context).size.width * 0.05,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * 0.05,
+                    left: MediaQuery.of(context).size.width * 0.07,
+                  ),
                   child: Row(
                     children: [
                       Column(
@@ -198,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * 0.04,
+                                  MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -212,13 +218,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.22),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
                           Icons.sort_sharp,
                           color: bfont,
-                          size: 28,
+                          size: MediaQuery.of(context).size.width * 0.08,
                         ),
                       )
                     ],
@@ -267,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               alignment: Alignment.topLeft,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
-                                                    left: 12.0),
+                                                    left: 12.0, top: 12.0),
                                                 child: Text(
                                                   snapshot
                                                       .data![index].eventName
@@ -275,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   textAlign: TextAlign.left,
                                                   style: GoogleFonts.workSans(
                                                       color: bfont,
-                                                      fontSize: 26,
+                                                      fontSize: MediaQuery.of(context).size.width * 0.06,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -310,7 +316,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * 0.04,
+                    left: MediaQuery.of(context).size.width * 0.07,
+                  ),
                   child: Row(
                     children: [
                       Column(
@@ -323,7 +332,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * 0.04,
+                                    MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -337,13 +346,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.5),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.44),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
                           Icons.sort_sharp,
                           color: bfont,
-                          size: 28,
+                          size: MediaQuery.of(context).size.width * 0.08,
                         ),
                       )
                     ],
