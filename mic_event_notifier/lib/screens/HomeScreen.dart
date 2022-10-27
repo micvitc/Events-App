@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginpage.dart';
 import 'dart:core';
+import 'dart:math';
+import 'dart:ui';
 import 'package:Login_ui/widgets/cards.dart';
 
 // String event_title = 'open mic';
@@ -31,13 +33,13 @@ String _getGreeting() {
   var timeNow = DateTime.now().hour;
 
   if (timeNow <= 12) {
-    return 'Good Morning!';
+    return 'Good Morning !';
   } else if ((timeNow > 12) && (timeNow <= 16)) {
-    return 'Good Afternoon!';
+    return 'Good Afternoon !';
   } else if ((timeNow > 16) && (timeNow < 20)) {
-    return 'Good Evening!';
+    return 'Good Evening !';
   } else {
-    return 'Good Night!';
+    return 'Good Night !';
   }
 }
 
@@ -125,16 +127,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 //     },
                 //   )
                 // ),
-
                 SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Stack(
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(),
                         // SizedBox(width: SizeConfig.screenWidth * 0.05),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.width * 0.03,
+                              left: MediaQuery.of(context).size.width * 0.0,
+                            ),
+                            child: CircleAvatar(
+                              backgroundColor: Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
+                              radius: 25,
+                              child: Text(
+                                _user.displayName!.substring(0,1),
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.workSans(
+                                  fontSize:
+                                  MediaQuery.of(context).size.width * 0.08,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                         Align(
                           alignment: Alignment.center,
                           child: Column(
@@ -143,9 +166,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  left:
-                                  MediaQuery.of(context).size.width * 0.01,
                                   top: MediaQuery.of(context).size.width * 0.03,
+                                  left: MediaQuery.of(context).size.width * 0.15,
                                 ),
                                 child: Text(
                                   _getGreeting(),
@@ -157,23 +179,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              Text(
-                                // ' ${_user.email!}',
-                                // textAlign: TextAlign.left,
-                                // style: GoogleFonts.workSans(
-                                //     color: bfont,
-                                //     fontSize:
-                                //     MediaQuery.of(context).size.width *
-                                //         0.032,
-                                //     fontWeight: FontWeight.bold),
-                                _user.displayName!.substring(0, _user.displayName!.length - 9),
-                                //_user.displayName!,
-                                textAlign: TextAlign.left,
-                                style: GoogleFonts.workSans(
-                                  color: bfont,
-                                  fontSize:
-                                  MediaQuery.of(context).size.width * 0.06,
-                                  fontWeight: FontWeight.w600,
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  //top: MediaQuery.of(context).size.width * 0.03,
+                                  left: MediaQuery.of(context).size.width * 0.15,
+                                ),
+                                child: Text(
+                                  _user.displayName!.substring(0, _user.displayName!.length - 9),
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.workSans(
+                                    color: bfont,
+                                    fontSize:
+                                    MediaQuery.of(context).size.width * 0.06,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ],
@@ -181,9 +200,36 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         // SizedBox(width: SizeConfig.screenWidth * 0.275),
                         Align(
+                          //alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.width * 0.03,
+                              left: MediaQuery.of(context).size.width * 0.5,
+                            ),
+                            child: ElevatedButton(
+                                child: Icon(
+                                  Icons.search_sharp,
+                                  size:
+                                  MediaQuery.of(context).size.width * 0.075,
+                                  color: bfont,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xffF0F0F0),
+                                    shape:
+                                    CircleBorder() /*const RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.all(Radius.circular(180))),*/
+                                ),
+                                onPressed: () {}),
+                          ),
+                        ),
+                        Align(
                           alignment: Alignment.centerRight,
-                          child: Container(
-                            width: 80,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.width * 0.03,
+                              right: MediaQuery.of(context).size.width * 0.02,
+                            ),
                             child: ElevatedButton(
                                 child: Icon(
                                   Icons.notifications_none_sharp,
@@ -206,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.05,
+                  height: MediaQuery.of(context).size.width * 0.04,
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -412,7 +458,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(width: MediaQuery.of(context).size.width * 0.3),
                       Align(
                         child: IconButton(
-                            onPressed: () {}, icon: Icon(Icons.refresh_sharp)),
+                            onPressed: () {}, icon: Icon(Icons.refresh_sharp,)),
                       ),
                       Align(
                         alignment: Alignment.centerRight,
