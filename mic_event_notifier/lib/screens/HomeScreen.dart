@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginpage.dart';
 import 'dart:core';
+import 'dart:math';
+import 'dart:ui';
 import 'package:Login_ui/widgets/cards.dart';
 
 // String event_title = 'open mic';
@@ -26,6 +28,20 @@ final List<String> imgList = [
 //   'nothing',
 //   'appathon'
 // ];
+
+String _getGreeting() {
+  var timeNow = DateTime.now().hour;
+
+  if (timeNow <= 12) {
+    return 'Good Morning !';
+  } else if ((timeNow > 12) && (timeNow <= 16)) {
+    return 'Good Afternoon !';
+  } else if ((timeNow > 16) && (timeNow < 20)) {
+    return 'Good Evening !';
+  } else {
+    return 'Good Night !';
+  }
+}
 
 List<EventModel> eventList = [];
 
@@ -68,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
         var curve = Curves.ease;
 
         var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -102,7 +118,6 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                
                 // SizedBox(height: MediaQuery.of(context).size.width * 0.2),
                 // Center(
                 //   child: GestureDetector(
@@ -112,16 +127,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 //     },
                 //   )
                 // ),
-
                 SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Stack(
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(),
                         // SizedBox(width: SizeConfig.screenWidth * 0.05),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.width * 0.03,
+                              left: MediaQuery.of(context).size.width * 0.0,
+                            ),
+                            child: CircleAvatar(
+                              backgroundColor: Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
+                              radius: 25,
+                              child: Text(
+                                _user.displayName!.substring(0,1),
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.workSans(
+                                  fontSize:
+                                  MediaQuery.of(context).size.width * 0.08,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                         Align(
                           alignment: Alignment.center,
                           child: Column(
@@ -130,53 +166,84 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width * 0.03,
                                   top: MediaQuery.of(context).size.width * 0.03,
+                                  left: MediaQuery.of(context).size.width * 0.15,
                                 ),
                                 child: Text(
-                                  _user.displayName!,
+                                  _getGreeting(),
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.workSans(
-                                    color: vwhite,
+                                      color: vwhite,
+                                      fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  //top: MediaQuery.of(context).size.width * 0.03,
+                                  left: MediaQuery.of(context).size.width * 0.15,
+                                ),
+                                child: Text(
+                                  _user.displayName!.substring(0, _user.displayName!.length - 9),
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.workSans(
+                                    color: bfont,
                                     fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.052,
+                                    MediaQuery.of(context).size.width * 0.06,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                              ),
-                              Text(
-                                ' ${_user.email!}',
-                                textAlign: TextAlign.left,
-                                style: GoogleFonts.workSans(
-                                    color: bfont,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.042,
-                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
                         // SizedBox(width: SizeConfig.screenWidth * 0.275),
                         Align(
-                          alignment: Alignment.centerRight,
-                          child: Container(
-                            width: 80,
+                          //alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.width * 0.03,
+                              left: MediaQuery.of(context).size.width * 0.5,
+                            ),
                             child: ElevatedButton(
                                 child: Icon(
-                                  Icons.notifications_none_sharp,
+                                  Icons.search_sharp,
                                   size:
-                                      MediaQuery.of(context).size.width * 0.075,
+                                  MediaQuery.of(context).size.width * 0.075,
                                   color: bfont,
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xffF0F0F0),
                                     shape:
-                                        CircleBorder() /*const RoundedRectangleBorder(
+                                    CircleBorder() /*const RoundedRectangleBorder(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(180))),*/
-                                    ),
+                                ),
+                                onPressed: () {}),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.width * 0.03,
+                              right: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            child: ElevatedButton(
+                                child: Icon(
+                                  Icons.notifications_none_sharp,
+                                  size:
+                                  MediaQuery.of(context).size.width * 0.075,
+                                  color: bfont,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xffF0F0F0),
+                                    shape:
+                                    CircleBorder() /*const RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.all(Radius.circular(180))),*/
+                                ),
                                 onPressed: () {}),
                           ),
                         ),
@@ -185,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.05,
+                  height: MediaQuery.of(context).size.width * 0.04,
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -199,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Events u have registered for',
+                              'Events you have registered for',
                               textAlign: TextAlign.left,
                               style: GoogleFonts.workSans(
                                   color: bfont,
@@ -208,16 +275,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold),
                             ),
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.22),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.12),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Icon(
-                          Icons.sort_sharp,
-                          color: bfont,
-                          size: MediaQuery.of(context).size.width * 0.08,
-                        ),
-                      )
-                    ],
+                        child: IconButton(
+                          onPressed: () {
+                          },
+                          icon: Icon(Icons.sort_sharp,
+                            color: bfont,
+                            size: MediaQuery.of(context).size.width * 0.08,),)
+                      ),],
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
@@ -232,79 +299,121 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: eventList.length,
                           itemBuilder: (BuildContext, int index, int b) =>
                               Flexible(
-                            flex: 5,
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(30.0),
-                                ),
-                                child: Expanded(
-                                  flex: 3,
-                                  child: Flexible(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.rectangle,
-                                        /* image: DecorationImage(
-                      image: NetworkImage(), fit: BoxFit.cover),*/
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.elliptical(20, 20),
-                                            topRight:
+                                flex: 5,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                    child: Expanded(
+                                      flex: 3,
+                                      child: Flexible(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            /* image: DecorationImage(image: NetworkImage(), fit: BoxFit.cover),*/
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.elliptical(20, 20),
+                                                topRight:
                                                 Radius.elliptical(20, 20)),
-                                        color: Colors.white,
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisAlignment:
+                                            color: Colors.white,
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
                                               MainAxisAlignment.start,
-                                          crossAxisAlignment:
+                                              crossAxisAlignment:
                                               CrossAxisAlignment.center,
-                                          children: [
-                                            Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 12.0, top: 12.0),
-                                                child: Text(
-                                                  snapshot
-                                                      .data![index].eventName
-                                                      .toString(),
-                                                  textAlign: TextAlign.left,
-                                                  style: GoogleFonts.workSans(
-                                                      color: bfont,
-                                                      fontSize: MediaQuery.of(context).size.width * 0.06,
-                                                      fontWeight:
+                                              children: [
+                                                Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 12.0, top: 12.0),
+                                                    child: Text(
+                                                      snapshot
+                                                          .data![index].eventName
+                                                          .toString(),
+                                                      textAlign: TextAlign.left,
+                                                      style: GoogleFonts.workSans(
+                                                          color: bfont,
+                                                          fontSize:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                              0.06,
+                                                          fontWeight:
                                                           FontWeight.bold),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            SizedBox(),
-                                            Text(
-                                              Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
-                                              textAlign: TextAlign.left,
-                                              style: GoogleFonts.workSans(
-                                                color: bfont,
-                                                fontSize: 15,
-                                              ),
-                                            ),
+                                                SizedBox(),
+                                                Row(
+                                                  children: [
+                                                  Align(
+                                                    alignment: Alignment.bottomLeft,
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(),
+                                                      //child: Icon(Icons.calendar_today_outlined),
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                        },
+                                                        icon: Icon(Icons.calendar_today_outlined,),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                Align(
+                                                  alignment: Alignment.bottomRight,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
+                                                    child: Column(children: <Widget>[
+                                                      Text(
+                                                        Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                                                        textAlign: TextAlign.left,
+                                                        style: GoogleFonts.workSans(
+                                                          color: bdiv,
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                  ),
+                                                ),
+                                                  ],
+                                                ),
+                                                // Text(
+                                                //   Dater(
+                                                //       millis: int.parse(snapshot
+                                                //           .data![index]
+                                                //           .eventDate
+                                                //           .toString()))
+                                                //       .dayTime,
+                                                //   textAlign: TextAlign.left,
+                                                //   style: GoogleFonts.workSans(
+                                                //     color: bfont,
+                                                //     fontSize: 15,
+                                                //   ),
+                                                // ),
 
-                                            ///todo:implement current ui for event details in slider - for Rishabh
-                                          ],
+                                                ///todo:implement current ui for event details in slider - for Rishabh
+                                              ],
+                                            ),
+                                          ),
+
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                )),
-                          ),
+                                    )),
+                              ),
                           options: CarouselOptions(
                             autoPlay: true,
-                            aspectRatio: 1.2,
+                            aspectRatio: 1.6,
                             enableInfiniteScroll: true,
                             enlargeCenterPage: true,
                           ),
                         );
                       }
                     }),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.017),
                 Padding(
                   padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * 0.04,
@@ -322,7 +431,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                    MediaQuery.of(context).size.width * 0.042,
+                                  MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -336,15 +445,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.44),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
+                      Align(
+                        child: IconButton(
+                            onPressed: () {}, icon: Icon(Icons.refresh_sharp,)),
+                      ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Icon(
-                          Icons.sort_sharp,
-                          color: bfont,
-                          size: MediaQuery.of(context).size.width * 0.08,
-                        ),
-                      )
+                        child: IconButton(
+                          onPressed: () {
+                          },
+                          icon: Icon(Icons.sort_sharp,
+                            color: bfont,
+                            size: MediaQuery.of(context).size.width * 0.08,),)
+                      ),
+                      //SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                     ],
                   ),
                 ),
