@@ -371,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
                                                             textAlign: TextAlign.left,
                                                             style: GoogleFonts.workSans(
-                                                              color: bdiv,
+                                                              color: bfont,
                                                               fontWeight: FontWeight.w400,
                                                               fontSize: 15,
                                                             ),
