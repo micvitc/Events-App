@@ -30,12 +30,26 @@ class Dater {
   // Print day and date in DD MM YYYY hh mm ss format
   // Minute and hour must be 2 digits
   String get dayTime => '$day/$month/$year ${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+  String get nowDayTime => '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year} ${DateTime.now().hour.toString().padLeft(2, '0')}:${DateTime.now().minute.toString().padLeft(2, '0')}';
   // ${second.toString().padLeft(2, '0')}';
   // String get dayDate => '$day/$month/$year $hour:$minute';
   // + (am ? "AM" : "PM");
 
   // Get current date and time and change it to milliseconds
   int get currentMillis => DateTime.now().millisecondsSinceEpoch;
+
+  // Convert given millisecond to mm::ss format
+  String milliToTime(int millis) {
+    int seconds = (millis / 1000).round();
+    int minutes = (seconds / 60).round();
+    seconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
+  String secondsToTime(int seconds) {
+    int minutes = (seconds / 60).round();
+    seconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
 }
 
 void main(List<String> args) {
