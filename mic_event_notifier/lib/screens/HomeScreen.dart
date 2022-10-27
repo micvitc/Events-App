@@ -27,6 +27,20 @@ final List<String> imgList = [
 //   'appathon'
 // ];
 
+String _getGreeting() {
+  var timeNow = DateTime.now().hour;
+
+  if (timeNow <= 12) {
+    return 'Good Morning!';
+  } else if ((timeNow > 12) && (timeNow <= 16)) {
+    return 'Good Afternoon!';
+  } else if ((timeNow > 16) && (timeNow < 20)) {
+    return 'Good Evening!';
+  } else {
+    return 'Good Night!';
+  }
+}
+
 List<EventModel> eventList = [];
 
 class MyBehavior extends ScrollBehavior {
@@ -68,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
         var curve = Curves.ease;
 
         var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -130,32 +144,37 @@ class _HomeScreenState extends State<HomeScreen> {
                               Padding(
                                 padding: EdgeInsets.only(
                                   left:
-                                      MediaQuery.of(context).size.width * 0.01,
+                                  MediaQuery.of(context).size.width * 0.01,
                                   top: MediaQuery.of(context).size.width * 0.03,
                                 ),
                                 child: Text(
-                                  _user.displayName!.substring(
-                                      0, _user.displayName!.length - 9),
-                                  //_user.displayName!,
+                                  _getGreeting(),
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.workSans(
-                                    color: vwhite,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.047,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                      color: vwhite,
+                                      fontSize:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Text(
-                                ' ${_user.email!}',
+                                // ' ${_user.email!}',
+                                // textAlign: TextAlign.left,
+                                // style: GoogleFonts.workSans(
+                                //     color: bfont,
+                                //     fontSize:
+                                //     MediaQuery.of(context).size.width *
+                                //         0.032,
+                                //     fontWeight: FontWeight.bold),
+                                _user.displayName!.substring(0, _user.displayName!.length - 9),
+                                //_user.displayName!,
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.workSans(
-                                    color: bfont,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.032,
-                                    fontWeight: FontWeight.bold),
+                                  color: bfont,
+                                  fontSize:
+                                  MediaQuery.of(context).size.width * 0.06,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ],
                           ),
@@ -169,16 +188,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Icon(
                                   Icons.notifications_none_sharp,
                                   size:
-                                      MediaQuery.of(context).size.width * 0.075,
+                                  MediaQuery.of(context).size.width * 0.075,
                                   color: bfont,
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xffF0F0F0),
                                     shape:
-                                        CircleBorder() /*const RoundedRectangleBorder(
+                                    CircleBorder() /*const RoundedRectangleBorder(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(180))),*/
-                                    ),
+                                ),
                                 onPressed: () {}),
                           ),
                         ),
@@ -206,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * 0.042,
+                                  MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -244,78 +263,77 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: eventList.length,
                           itemBuilder: (BuildContext, int index, int b) =>
                               Flexible(
-                            flex: 5,
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(30.0),
-                                ),
-                                child: Expanded(
-                                  flex: 3,
-                                  child: Flexible(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.rectangle,
-                                        /* image: DecorationImage(
-                      image: NetworkImage(), fit: BoxFit.cover),*/
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.elliptical(20, 20),
-                                            topRight:
+                                flex: 5,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                    child: Expanded(
+                                      flex: 3,
+                                      child: Flexible(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            /* image: DecorationImage(image: NetworkImage(), fit: BoxFit.cover),*/
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.elliptical(20, 20),
+                                                topRight:
                                                 Radius.elliptical(20, 20)),
-                                        color: Colors.white,
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisAlignment:
+                                            color: Colors.white,
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
                                               MainAxisAlignment.start,
-                                          crossAxisAlignment:
+                                              crossAxisAlignment:
                                               CrossAxisAlignment.center,
-                                          children: [
-                                            Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 12.0, top: 12.0),
-                                                child: Text(
-                                                  snapshot
-                                                      .data![index].eventName
-                                                      .toString(),
-                                                  textAlign: TextAlign.left,
-                                                  style: GoogleFonts.workSans(
-                                                      color: bfont,
-                                                      fontSize:
+                                              children: [
+                                                Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 12.0, top: 12.0),
+                                                    child: Text(
+                                                      snapshot
+                                                          .data![index].eventName
+                                                          .toString(),
+                                                      textAlign: TextAlign.left,
+                                                      style: GoogleFonts.workSans(
+                                                          color: bfont,
+                                                          fontSize:
                                                           MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
+                                                              .size
+                                                              .width *
                                                               0.06,
-                                                      fontWeight:
+                                                          fontWeight:
                                                           FontWeight.bold),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            SizedBox(),
-                                            Text(
-                                              Dater(
+                                                SizedBox(),
+                                                Text(
+                                                  Dater(
                                                       millis: int.parse(snapshot
                                                           .data![index]
                                                           .eventDate
                                                           .toString()))
-                                                  .dayTime,
-                                              textAlign: TextAlign.left,
-                                              style: GoogleFonts.workSans(
-                                                color: bfont,
-                                                fontSize: 15,
-                                              ),
-                                            ),
+                                                      .dayTime,
+                                                  textAlign: TextAlign.left,
+                                                  style: GoogleFonts.workSans(
+                                                    color: bfont,
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
 
-                                            ///todo:implement current ui for event details in slider - for Rishabh
-                                          ],
+                                                ///todo:implement current ui for event details in slider - for Rishabh
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                )),
-                          ),
+                                    )),
+                              ),
                           options: CarouselOptions(
                             autoPlay: true,
                             aspectRatio: 1.6,
@@ -343,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * 0.042,
+                                  MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
