@@ -277,13 +277,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.12),
                       Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          onPressed: () {
-                          },
-                          icon: Icon(Icons.sort_sharp,
-                            color: bfont,
-                            size: MediaQuery.of(context).size.width * 0.08,),)
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            onPressed: () {
+                            },
+                            icon: Icon(Icons.sort_sharp,
+                              color: bfont,
+                              size: MediaQuery.of(context).size.width * 0.08,),)
                       ),],
                   ),
                 ),
@@ -350,35 +350,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 SizedBox(),
                                                 Row(
                                                   children: [
-                                                  Align(
-                                                    alignment: Alignment.bottomLeft,
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.only(),
-                                                      //child: Icon(Icons.calendar_today_outlined),
-                                                      child: IconButton(
-                                                        onPressed: () {
-                                                        },
-                                                        icon: Icon(Icons.calendar_today_outlined,),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                Align(
-                                                  alignment: Alignment.bottomRight,
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
-                                                    child: Column(children: <Widget>[
-                                                      Text(
-                                                        Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
-                                                        textAlign: TextAlign.left,
-                                                        style: GoogleFonts.workSans(
-                                                          color: bdiv,
-                                                          fontWeight: FontWeight.w400,
-                                                          fontSize: 15,
+                                                    Align(
+                                                      alignment: Alignment.bottomLeft,
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.only(),
+                                                        //child: Icon(Icons.calendar_today_outlined),
+                                                        child: IconButton(
+                                                          onPressed: () {
+                                                          },
+                                                          icon: Icon(Icons.calendar_today_outlined,),
                                                         ),
                                                       ),
-                                                    ]),
-                                                  ),
-                                                ),
+                                                    ),
+                                                    Align(
+                                                      alignment: Alignment.bottomRight,
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
+                                                        child: Column(children: <Widget>[
+                                                          Text(
+                                                            Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                                                            textAlign: TextAlign.left,
+                                                            style: GoogleFonts.workSans(
+                                                              color: bdiv,
+                                                              fontWeight: FontWeight.w400,
+                                                              fontSize: 15,
+                                                            ),
+                                                          ),
+                                                        ]),
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                                 // Text(
@@ -445,19 +445,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.25),
                       Align(
-                        child: IconButton(
-                            onPressed: () {}, icon: Icon(Icons.refresh_sharp,)),
+                        child: OutlinedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<CircleBorder>(CircleBorder(
+                              //borderRadius: BorderRadius.circular(100),
+                              side: BorderSide(color: bfont),
+                            )),
+                          ),
+                          child: Icon(Icons.refresh_sharp, color: bfont),
+                        )
                       ),
                       Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          onPressed: () {
-                          },
-                          icon: Icon(Icons.sort_sharp,
-                            color: bfont,
-                            size: MediaQuery.of(context).size.width * 0.08,),)
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            onPressed: () {
+                            },
+                            icon: Icon(Icons.sort_sharp,
+                              color: bfont,
+                              size: MediaQuery.of(context).size.width * 0.08,),)
                       ),
                       //SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                     ],
