@@ -102,7 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                
                 // SizedBox(height: MediaQuery.of(context).size.width * 0.2),
                 // Center(
                 //   child: GestureDetector(
@@ -130,17 +129,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width * 0.03,
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.01,
                                   top: MediaQuery.of(context).size.width * 0.03,
                                 ),
                                 child: Text(
-                                  _user.displayName!.substring(0, _user.displayName!.length-9),
+                                  _user.displayName!.substring(
+                                      0, _user.displayName!.length - 9),
                                   //_user.displayName!,
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.workSans(
                                     color: vwhite,
                                     fontSize:
-                                        MediaQuery.of(context).size.width * 0.052,
+                                        MediaQuery.of(context).size.width *
+                                            0.047,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -152,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: bfont,
                                     fontSize:
                                         MediaQuery.of(context).size.width *
-                                            0.042,
+                                            0.032,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -199,12 +201,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Events u have registered for',
+                              'Events you have registered for',
                               textAlign: TextAlign.left,
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                  MediaQuery.of(context).size.width * 0.042,
+                                      MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -218,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             //   ),
                             // )
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.12),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
@@ -281,7 +283,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   textAlign: TextAlign.left,
                                                   style: GoogleFonts.workSans(
                                                       color: bfont,
-                                                      fontSize: MediaQuery.of(context).size.width * 0.06,
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.06,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -289,7 +295,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             SizedBox(),
                                             Text(
-                                              Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                                              Dater(
+                                                      millis: int.parse(snapshot
+                                                          .data![index]
+                                                          .eventDate
+                                                          .toString()))
+                                                  .dayTime,
                                               textAlign: TextAlign.left,
                                               style: GoogleFonts.workSans(
                                                 color: bfont,
@@ -307,14 +318,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           options: CarouselOptions(
                             autoPlay: true,
-                            aspectRatio: 1.2,
+                            aspectRatio: 1.6,
                             enableInfiniteScroll: true,
                             enlargeCenterPage: true,
                           ),
                         );
                       }
                     }),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.017),
                 Padding(
                   padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.width * 0.04,
@@ -332,7 +343,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                    MediaQuery.of(context).size.width * 0.042,
+                                      MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -348,7 +359,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.3),
                       Align(
-                        child: IconButton(onPressed: (){}, icon: Icon(Icons.refresh_sharp)),
+                        child: IconButton(
+                            onPressed: () {}, icon: Icon(Icons.refresh_sharp)),
                       ),
                       Align(
                         alignment: Alignment.centerRight,
@@ -359,7 +371,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       //SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-
                     ],
                   ),
                 ),
