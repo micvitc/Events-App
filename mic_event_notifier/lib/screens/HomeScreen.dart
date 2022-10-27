@@ -312,22 +312,48 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(),
-                                                IconButton(onPressed: () {
-                                                },
-                                                  icon: Icon(Icons.calendar_today_outlined),),
-                                                Text(
-                                                  Dater(
-                                                      millis: int.parse(snapshot
-                                                          .data![index]
-                                                          .eventDate
-                                                          .toString()))
-                                                      .dayTime,
-                                                  textAlign: TextAlign.left,
-                                                  style: GoogleFonts.workSans(
-                                                    color: bfont,
-                                                    fontSize: 15,
+                                                // Align(
+                                                //   alignment: Alignment.bottomLeft,
+                                                //   child: Padding(
+                                                //     padding: const EdgeInsets.only(),
+                                                //     //child: Icon(Icons.calendar_today_outlined),
+                                                //     child: IconButton(
+                                                //       onPressed: () {
+                                                //       },
+                                                //       icon: Icon(Icons.calendar_today_outlined,),
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                                Align(
+                                                  alignment: Alignment.bottomRight,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.fromLTRB(10.0, 0.0, 180.0, 0.0),
+                                                    child: Column(children: <Widget>[
+                                                      Text(
+                                                        Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                                                        textAlign: TextAlign.left,
+                                                        style: GoogleFonts.workSans(
+                                                          color: bdiv,
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
+                                                      ),
+                                                    ]),
                                                   ),
                                                 ),
+                                                // Text(
+                                                //   Dater(
+                                                //       millis: int.parse(snapshot
+                                                //           .data![index]
+                                                //           .eventDate
+                                                //           .toString()))
+                                                //       .dayTime,
+                                                //   textAlign: TextAlign.left,
+                                                //   style: GoogleFonts.workSans(
+                                                //     color: bfont,
+                                                //     fontSize: 15,
+                                                //   ),
+                                                // ),
 
                                                 ///todo:implement current ui for event details in slider - for Rishabh
                                               ],
