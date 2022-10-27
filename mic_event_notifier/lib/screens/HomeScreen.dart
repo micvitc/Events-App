@@ -312,22 +312,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(),
-                                                // Align(
-                                                //   alignment: Alignment.bottomLeft,
-                                                //   child: Padding(
-                                                //     padding: const EdgeInsets.only(),
-                                                //     //child: Icon(Icons.calendar_today_outlined),
-                                                //     child: IconButton(
-                                                //       onPressed: () {
-                                                //       },
-                                                //       icon: Icon(Icons.calendar_today_outlined,),
-                                                //     ),
-                                                //   ),
-                                                // ),
+                                                Row(
+                                                  children: [
+                                                  Align(
+                                                    alignment: Alignment.bottomLeft,
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(),
+                                                      //child: Icon(Icons.calendar_today_outlined),
+                                                      child: IconButton(
+                                                        onPressed: () {
+                                                        },
+                                                        icon: Icon(Icons.calendar_today_outlined,),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 Align(
                                                   alignment: Alignment.bottomRight,
                                                   child: Padding(
-                                                    padding: const EdgeInsets.fromLTRB(10.0, 0.0, 180.0, 0.0),
+                                                    padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
                                                     child: Column(children: <Widget>[
                                                       Text(
                                                         Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
@@ -340,6 +342,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       ),
                                                     ]),
                                                   ),
+                                                ),
+                                                  ],
                                                 ),
                                                 // Text(
                                                 //   Dater(
