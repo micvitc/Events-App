@@ -81,12 +81,61 @@ class _CardsState extends State<Cards> {
       if (notif[index] == false) {
         Dater dater = Dater(millis: int.parse(event.eventDate.toString()));
         int diff = dater.difference;
-        NotificationService().showNotification(
-          int.parse(event.eventId.toString()),
-          event.eventName.toString(),
-          'The event will start by ${dater.dayTime}', // body,
-          (diff > 0) ? diff : 120,
-        );
+
+        if (diff-(60*60*24) > 0) {
+          NotificationService().showNotification(
+            int.parse(event.eventId.toString()),
+            event.eventName.toString(),
+            '1 day reminder for ${event.eventName}', // body,
+            diff-(60*60*24),
+          );
+        }
+        // else {
+          // print("Event is 1 day too close to be reminded");
+        // }
+
+        if (diff-(60*60) > 0) {
+          NotificationService().showNotification(
+            int.parse(event.eventId.toString()),
+            event.eventName.toString(),
+            '1 hour reminder for ${event.eventName}', // body,
+            diff-(60*60),
+          );
+        }
+        // else {
+          // print("Event is 1 hour too close to be reminded");
+        // }
+
+        if (diff-(60*15) > 0) {
+          NotificationService().showNotification(
+            int.parse(event.eventId.toString()),
+            event.eventName.toString(),
+            '15 minute reminder for ${event.eventName}', // body,
+            diff-(60*15),
+          );
+        }
+        // else {
+          // print("Event is 15 minutes too close to be reminded");
+        // }
+        
+        // if (diff > 0) {
+        //   NotificationService().showNotification(
+        //     int.parse(event.eventId.toString()),
+        //     event.eventName.toString(),
+        //     'The event will start by ${dater.dayTime}', // body,
+        //     diff,
+        //   );
+        // }
+        // else {
+        //   // print("Event is 0 seconds too close to be reminded");
+        //   NotificationService().showNotification(
+        //     int.parse(event.eventId.toString()),
+        //     event.eventName.toString(),
+        //     'The event has started', // body,
+        //     1,
+        //   );
+        // }
+        
       }
       else {
         NotificationService().cancelNotification(int.parse(event.eventId.toString()));
