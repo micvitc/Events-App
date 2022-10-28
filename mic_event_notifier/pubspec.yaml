@@ -45,6 +45,7 @@ dependencies:
   flutter_local_notifications: ^12.0.2
   shared_preferences: ^2.0.15
   firebase_core_platform_interface: ^4.5.1
+  auto_size_text: ^2.1.0
 
 dev_dependencies:
   flutter_test:
