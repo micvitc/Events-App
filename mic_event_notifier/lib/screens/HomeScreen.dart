@@ -184,9 +184,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   //top: MediaQuery.of(context).size.width * 0.03,
                                   left: MediaQuery.of(context).size.width * 0.15,
                                 ),
-                                child: Text(
+                                child: AutoSizeText(
                                   _user.displayName!.substring(0, _user.displayName!.length - 9),
                                   textAlign: TextAlign.left,
+                                  maxLines: 2,
+                                  minFontSize: 18,
                                   style: GoogleFonts.workSans(
                                     color: bfont,
                                     fontSize:
