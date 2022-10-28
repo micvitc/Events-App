@@ -368,10 +368,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
                                                         child: Column(children: <Widget>[
                                                           Text(
-                                                            Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                                                            '${Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.substring(0,Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length - 5)}\n${Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.substring(Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length - 5, Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length)}',
                                                             textAlign: TextAlign.left,
                                                             style: GoogleFonts.workSans(
-                                                              color: bdiv,
+                                                              color: bfont,
                                                               fontWeight: FontWeight.w400,
                                                               fontSize: 15,
                                                             ),
