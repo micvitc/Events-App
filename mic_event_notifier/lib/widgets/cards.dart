@@ -81,10 +81,13 @@ class _CardsState extends State<Cards> {
       if (notif[index] == false) {
         Dater dater = Dater(millis: int.parse(event.eventDate.toString()));
         int diff = dater.difference;
+        
+        // ID must be different for each notifications to work.
+        // Commited as on 31-10-22 13:40.
 
         if (diff-(60*60*24) > 0) {
           NotificationService().showNotification(
-            int.parse(event.eventId.toString()),
+            int.parse(event.eventId.toString())+(60*60*24),
             event.eventName.toString(),
             '1 day reminder for ${event.eventName}', // body,
             diff-(60*60*24),
@@ -96,7 +99,7 @@ class _CardsState extends State<Cards> {
 
         if (diff-(60*60) > 0) {
           NotificationService().showNotification(
-            int.parse(event.eventId.toString()),
+            int.parse(event.eventId.toString())+(60*60),
             event.eventName.toString(),
             '1 hour reminder for ${event.eventName}', // body,
             diff-(60*60),
@@ -108,7 +111,7 @@ class _CardsState extends State<Cards> {
 
         if (diff-(60*15) > 0) {
           NotificationService().showNotification(
-            int.parse(event.eventId.toString()),
+            int.parse(event.eventId.toString())+(60*15),
             event.eventName.toString(),
             '15 minute reminder for ${event.eventName}', // body,
             diff-(60*15),
