@@ -12,6 +12,7 @@ import 'dart:core';
 import 'dart:math';
 import 'dart:ui';
 import 'package:Login_ui/widgets/cards.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 // String event_title = 'open mic';
 // int slider_event = eventname.length;
