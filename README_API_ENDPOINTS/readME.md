@@ -31,7 +31,7 @@ Usually response methods consist of data in HTML, CSV, JSON, JPEG(or any form of
 
 |**Attributes defined**|**Description**|**Input type**|**Necessity**|
 | :- | :- | :- | :- |
-|**event\_id**|Uniquely identifies an event|String|Required and have to be unique|
+|**event\_id**|Uniquely identifies an event|Integer|Required and have to be unique|
 |**event\_name** |Name of the event|String|Required|
 |**event\_date**|Date the event is held|Datetime|Required|
 |**event\_venue**|Venue/Location the event is held|String|Required |
