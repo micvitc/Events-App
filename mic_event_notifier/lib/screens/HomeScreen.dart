@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
         var curve = Curves.ease;
 
         var tween =
-        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -145,14 +145,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               left: MediaQuery.of(context).size.width * 0.0,
                             ),
                             child: CircleAvatar(
-                              backgroundColor: Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
+                              backgroundColor:
+                                  Color(Random().nextInt(0xffffffff))
+                                      .withAlpha(0xff),
                               radius: 25,
                               child: Text(
-                                _user.displayName!.substring(0,1),
+                                _user.displayName!.substring(0, 1),
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.workSans(
                                   fontSize:
-                                  MediaQuery.of(context).size.width * 0.08,
+                                      MediaQuery.of(context).size.width * 0.08,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -168,7 +170,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               Padding(
                                 padding: EdgeInsets.only(
                                   top: MediaQuery.of(context).size.width * 0.03,
-                                  left: MediaQuery.of(context).size.width * 0.15,
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.15,
                                 ),
                                 child: Text(
                                   _getGreeting(),
@@ -176,24 +179,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: GoogleFonts.workSans(
                                       color: vwhite,
                                       fontSize:
-                                      MediaQuery.of(context).size.width * 0.04,
+                                          MediaQuery.of(context).size.width *
+                                              0.04,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(
                                   //top: MediaQuery.of(context).size.width * 0.03,
-                                  left: MediaQuery.of(context).size.width * 0.15,
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.15,
                                 ),
                                 child: AutoSizeText(
-                                  _user.displayName!.substring(0, _user.displayName!.length - 9),
+                                  _user.displayName!.substring(
+                                      0, _user.displayName!.length - 9),
                                   textAlign: TextAlign.left,
                                   maxLines: 2,
                                   minFontSize: 18,
                                   style: GoogleFonts.workSans(
                                     color: bfont,
                                     fontSize:
-                                    MediaQuery.of(context).size.width * 0.06,
+                                        MediaQuery.of(context).size.width *
+                                            0.06,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -213,16 +220,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Icon(
                                   Icons.search_sharp,
                                   size:
-                                  MediaQuery.of(context).size.width * 0.075,
+                                      MediaQuery.of(context).size.width * 0.075,
                                   color: bfont,
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xffF0F0F0),
                                     shape:
-                                    CircleBorder() /*const RoundedRectangleBorder(
+                                        CircleBorder() /*const RoundedRectangleBorder(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(180))),*/
-                                ),
+                                    ),
                                 onPressed: () {}),
                           ),
                         ),
@@ -237,16 +244,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Icon(
                                   Icons.notifications_none_sharp,
                                   size:
-                                  MediaQuery.of(context).size.width * 0.075,
+                                      MediaQuery.of(context).size.width * 0.075,
                                   color: bfont,
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xffF0F0F0),
                                     shape:
-                                    CircleBorder() /*const RoundedRectangleBorder(
+                                        CircleBorder() /*const RoundedRectangleBorder(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(180))),*/
-                                ),
+                                    ),
                                 onPressed: () {}),
                           ),
                         ),
@@ -274,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                  MediaQuery.of(context).size.width * 0.042,
+                                      MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                           ]),
@@ -282,12 +289,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       Align(
                           alignment: Alignment.centerRight,
                           child: IconButton(
-                            onPressed: () {
-                            },
-                            icon: Icon(Icons.sort_sharp,
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.sort_sharp,
                               color: bfont,
-                              size: MediaQuery.of(context).size.width * 0.08,),)
-                      ),],
+                              size: MediaQuery.of(context).size.width * 0.08,
+                            ),
+                          )),
+                    ],
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.025),
@@ -301,112 +310,110 @@ class _HomeScreenState extends State<HomeScreen> {
                         return CarouselSlider.builder(
                           itemCount: eventList.length,
                           itemBuilder: (BuildContext, int index, int b) =>
-                              Flexible(
-                                flex: 5,
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(30.0),
+                              ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30.0),
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      /* image: DecorationImage(image: NetworkImage(), fit: BoxFit.cover),*/
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.elliptical(20, 20),
+                                          topRight: Radius.elliptical(20, 20)),
+                                      color: Colors.white,
                                     ),
-                                    child: Expanded(
-                                      flex: 3,
-                                      child: Flexible(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            /* image: DecorationImage(image: NetworkImage(), fit: BoxFit.cover),*/
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.elliptical(20, 20),
-                                                topRight:
-                                                Radius.elliptical(20, 20)),
-                                            color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 12.0, top: 12.0),
+                                              child: Text(
+                                                snapshot.data![index].eventName
+                                                    .toString(),
+                                                textAlign: TextAlign.left,
+                                                style: GoogleFonts.workSans(
+                                                    color: bfont,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.06,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
                                           ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.topLeft,
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        left: 12.0, top: 12.0),
-                                                    child: Text(
-                                                      snapshot
-                                                          .data![index].eventName
-                                                          .toString(),
-                                                      textAlign: TextAlign.left,
-                                                      style: GoogleFonts.workSans(
-                                                          color: bfont,
-                                                          fontSize:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                              0.06,
-                                                          fontWeight:
-                                                          FontWeight.bold),
+                                          SizedBox(),
+                                          Row(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.bottomLeft,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(),
+                                                  //child: Icon(Icons.calendar_today_outlined),
+                                                  child: IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons
+                                                          .calendar_today_outlined,
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(),
-                                                Row(
-                                                  children: [
-                                                    Align(
-                                                      alignment: Alignment.bottomLeft,
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.only(),
-                                                        //child: Icon(Icons.calendar_today_outlined),
-                                                        child: IconButton(
-                                                          onPressed: () {
-                                                          },
-                                                          icon: Icon(Icons.calendar_today_outlined,),
-                                                        ),
+                                              ),
+                                              Align(
+                                                alignment:
+                                                    Alignment.bottomRight,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10.0, 0.0, 10.0, 0.0),
+                                                  child:
+                                                      Column(children: <Widget>[
+                                                    Text(
+                                                      '${Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.substring(0, Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length - 5)}\n${Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.substring(Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length - 5, Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length)}',
+                                                      textAlign: TextAlign.left,
+                                                      style:
+                                                          GoogleFonts.workSans(
+                                                        color: bfont,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 15,
                                                       ),
                                                     ),
-                                                    Align(
-                                                      alignment: Alignment.bottomRight,
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
-                                                        child: Column(children: <Widget>[
-                                                          Text(
-                                                            '${Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.substring(0,Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length - 5)}\n${Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.substring(Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length - 5, Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime.length)}',
-                                                            textAlign: TextAlign.left,
-                                                            style: GoogleFonts.workSans(
-                                                              color: bfont,
-                                                              fontWeight: FontWeight.w400,
-                                                              fontSize: 15,
-                                                            ),
-                                                          ),
-                                                        ]),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                  ]),
                                                 ),
-                                                // Text(
-                                                //   Dater(
-                                                //       millis: int.parse(snapshot
-                                                //           .data![index]
-                                                //           .eventDate
-                                                //           .toString()))
-                                                //       .dayTime,
-                                                //   textAlign: TextAlign.left,
-                                                //   style: GoogleFonts.workSans(
-                                                //     color: bfont,
-                                                //     fontSize: 15,
-                                                //   ),
-                                                // ),
-
-                                                ///todo:implement current ui for event details in slider - for Rishabh
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
+                                          // Text(
+                                          //   Dater(
+                                          //       millis: int.parse(snapshot
+                                          //           .data![index]
+                                          //           .eventDate
+                                          //           .toString()))
+                                          //       .dayTime,
+                                          //   textAlign: TextAlign.left,
+                                          //   style: GoogleFonts.workSans(
+                                          //     color: bfont,
+                                          //     fontSize: 15,
+                                          //   ),
+                                          // ),
 
-                                        ),
+                                          ///todo:implement current ui for event details in slider - for Rishabh
+                                        ],
                                       ),
-                                    )),
-                              ),
+                                    ),
+                                  )),
                           options: CarouselOptions(
                             autoPlay: true,
                             aspectRatio: 1.6,
@@ -434,7 +441,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.workSans(
                                   color: bfont,
                                   fontSize:
-                                  MediaQuery.of(context).size.width * 0.042,
+                                      MediaQuery.of(context).size.width * 0.042,
                                   fontWeight: FontWeight.bold),
                             ),
                             // Text(
@@ -450,32 +457,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.25),
                       Align(
-                        child: OutlinedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<CircleBorder>(CircleBorder(
-                              //borderRadius: BorderRadius.circular(100),
-                              side: BorderSide(color: bfont),
-                            )),
-                          ),
-                          child: Icon(Icons.refresh_sharp, color: bfont),
-                        )
-                      ),
+                          child: OutlinedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<CircleBorder>(
+                              CircleBorder(
+                            //borderRadius: BorderRadius.circular(100),
+                            side: BorderSide(color: bfont),
+                          )),
+                        ),
+                        child: Icon(Icons.refresh_sharp, color: bfont),
+                      )),
                       Align(
                           alignment: Alignment.centerRight,
                           child: IconButton(
-                            onPressed: () {
-                            },
-                            icon: Icon(Icons.sort_sharp,
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.sort_sharp,
                               color: bfont,
-                              size: MediaQuery.of(context).size.width * 0.08,),)
-                      ),
+                              size: MediaQuery.of(context).size.width * 0.08,
+                            ),
+                          )),
                       //SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                     ],
                   ),
                 ),
-                Expanded(child: const EventsCard())
-                ,
+                Expanded(flex: 2, child: const EventsCard()),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.05),
               ]),
         ),
@@ -483,7 +490,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
 
 // import 'package:Login_ui/main.dart';
 // import 'package:Login_ui/models/EventModel.dart';
