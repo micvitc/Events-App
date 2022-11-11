@@ -57,13 +57,9 @@ class EventsCard extends StatefulWidget {
 class _EventsCardState extends State<EventsCard> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.width,
-          padding: new EdgeInsets.all(10.0),
-          child: Cards()),
-    );
+    return Padding(
+        padding: EdgeInsets.only(left: 20, right: 20, bottom: 5),
+        child: Cards());
   }
 }
 
@@ -75,52 +71,48 @@ class Cards extends StatefulWidget {
 }
 
 class _CardsState extends State<Cards> {
-
   void setNotif(EventModel event, int index) {
     setState(() {
       if (notif[index] == false) {
         Dater dater = Dater(millis: int.parse(event.eventDate.toString()));
         int diff = dater.difference;
-        
+
         // ID must be different for each notifications to work.
         // Commited as on 31-10-22 13:40.
 
-        if (diff-(60*60*24) > 0) {
+        if (diff - (60 * 60 * 24) > 0) {
           NotificationService().showNotification(
-            int.parse(event.eventId.toString())+(60*60*24),
+            int.parse(event.eventId.toString()) + (60 * 60 * 24),
             event.eventName.toString(),
             '1 day reminder for ${event.eventName}', // body,
-            diff-(60*60*24),
+            diff - (60 * 60 * 24),
           );
-        }
-        else {
+        } else {
           print("Event is 1 day too close to be reminded");
         }
 
-        if (diff-(60*60) > 0) {
+        if (diff - (60 * 60) > 0) {
           NotificationService().showNotification(
-            int.parse(event.eventId.toString())+(60*60),
+            int.parse(event.eventId.toString()) + (60 * 60),
             event.eventName.toString(),
             '1 hour reminder for ${event.eventName}', // body,
-            diff-(60*60),
+            diff - (60 * 60),
           );
-        }
-        else {
+        } else {
           print("Event is 1 hour too close to be reminded");
         }
 
-        if (diff-(60*15) > 0) {
+        if (diff - (60 * 15) > 0) {
           NotificationService().showNotification(
-            int.parse(event.eventId.toString())+(60*15),
+            int.parse(event.eventId.toString()) + (60 * 15),
             event.eventName.toString(),
             '15 minute reminder for ${event.eventName}', // body,
-            diff-(60*15),
+            diff - (60 * 15),
           );
-        }
-        else {
+        } else {
           print("Event is 15 minutes too close to be reminded");
         }
-        
+
         if (diff > 0) {
           NotificationService().showNotification(
             int.parse(event.eventId.toString()),
@@ -128,8 +120,7 @@ class _CardsState extends State<Cards> {
             'The event will start by ${dater.dayTime}', // body,
             diff,
           );
-        }
-        else {
+        } else {
           // print("Event is 0 seconds too close to be reminded");
           NotificationService().showNotification(
             int.parse(event.eventId.toString()),
@@ -138,7 +129,6 @@ class _CardsState extends State<Cards> {
             1,
           );
         }
-        
       }
       // else {
       //   NotificationService().cancelNotification(int.parse(event.eventId.toString()));
@@ -198,7 +188,9 @@ class _CardsState extends State<Cards> {
                             },
                             icon: Icon(Icons.check_circle,
                                 size: 35,
-                                color: (notif[index] == true) ? Colors.blueAccent : bdiv),
+                                color: (notif[index] == true)
+                                    ? Colors.blueAccent
+                                    : bdiv),
                           ),
                         ),
                       ),
@@ -211,10 +203,15 @@ class _CardsState extends State<Cards> {
                       ),
                       ListTile(
                         title: Padding(
-                          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 120.0, 0.0),
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 120.0, 0.0),
                           child: Column(children: <Widget>[
                             Text(
-                              Dater(millis: int.parse(snapshot.data![index].eventDate.toString())).dayTime,
+                              Dater(
+                                      millis: int.parse(snapshot
+                                          .data![index].eventDate
+                                          .toString()))
+                                  .dayTime,
                               textAlign: TextAlign.left,
                               style: GoogleFonts.workSans(
                                 color: bdiv,
@@ -224,13 +221,14 @@ class _CardsState extends State<Cards> {
                             ),
                           ]),
                         ),
-                        leading:Padding(
+                        leading: Padding(
                           padding: const EdgeInsets.only(bottom: 6.0),
                           //child: Icon(Icons.calendar_today_outlined),
                           child: IconButton(
-                            onPressed: () {
-                            },
-                            icon: Icon(Icons.calendar_today_outlined,),
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.calendar_today_outlined,
+                            ),
                           ),
                         ),
                       ),
@@ -241,7 +239,6 @@ class _CardsState extends State<Cards> {
         });
   }
 }
-
 
 // // ignore_for_file: prefer_const_constructors
 
@@ -355,7 +352,6 @@ class _CardsState extends State<Cards> {
 
 // class _CardsState extends State<Cards> {
 
-  
 //   @override
 //   void initState() {
 
@@ -430,7 +426,7 @@ class _CardsState extends State<Cards> {
 //         // else {
 //         //   print("Event is 15 minutes too close to be reminded");
 //         // }
-        
+
 //         if (diff > 0) {
 //           NotificationService().showNotification(
 //             int.parse(event.eventId.toString()),
@@ -449,7 +445,7 @@ class _CardsState extends State<Cards> {
 //           );
 //         }
 //       }
-      
+
 //       // else {
 //       //   notif[index] = false;
 //       //   NotificationService().cancelNotification(int.parse(event.eventId.toString()));
@@ -457,10 +453,9 @@ class _CardsState extends State<Cards> {
 
 //       print(notif);
 //       notif[index] = !notif[index];
-      
+
 //     });
 //   }
-
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -558,7 +553,6 @@ class _CardsState extends State<Cards> {
 //         });
 //   }
 // }
-
 
 // // ignore_for_file: prefer_const_constructors
 
@@ -685,8 +679,6 @@ class _CardsState extends State<Cards> {
 //         });
 //   }
 // }
-
-
 
 ///////////////////////////
 

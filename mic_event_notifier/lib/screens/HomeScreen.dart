@@ -285,7 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold),
                             ),
                           ]),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.12),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                       Align(
                           alignment: Alignment.centerRight,
                           child: IconButton(
